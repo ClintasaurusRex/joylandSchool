@@ -25,37 +25,37 @@ function Navbar() {
 
         <ul className={`navbar-links ${isMenuOpen ? "open" : ""}`}>
           <li>
-            <a class="nav-link" href="/">
+            <a className="nav-link" href="/">
               Home
             </a>
           </li>
           <li>
-            <a class="nav-link" href="/about">
+            <a className="nav-link" href="/about">
               About
             </a>
           </li>
           <li>
-            <a class="nav-link" href="/admission">
+            <a className="nav-link" href="/admission">
               Admission
             </a>
           </li>
           <li>
-            <a class="nav-link" href="/academic">
+            <a className="nav-link" href="/academic">
               Academic
             </a>
           </li>
           <li>
-            <a class="nav-link" href="/sports">
+            <a className="nav-link" href="/sports">
               Sports
             </a>
           </li>
           <li>
-            <a class="nav-link" href="/contribute">
+            <a className="nav-link" href="/contribute">
               Contribute
             </a>
           </li>
           <li>
-            <a class="nav-link" href="/contact">
+            <a className="nav-link" href="/contact">
               Contact Us
             </a>
           </li>
