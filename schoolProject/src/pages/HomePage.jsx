@@ -1,7 +1,17 @@
 import React from "react";
-import { Container, Typography, Grid, Card, CardContent, Button } from "@mui/material";
+import {
+  Container,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+  Button,
+  Box,
+  Divider,
+} from "@mui/material";
 import { styled } from "@mui/system";
 import { useNavigate } from "react-router-dom";
+import "../styles/HomePage.css";
 
 const StyledHero = styled("div")({
   background: "linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)",
@@ -12,6 +22,32 @@ const StyledHero = styled("div")({
 
 const HomePage = () => {
   const navigate = useNavigate();
+
+  // Mock news data
+  const newsItems = [
+    {
+      id: 1,
+      title: "Annual Science Fair Winners Announced",
+      date: "June 15, 2023",
+      content:
+        "Congratulations to all participants in this year's Science Fair. Special recognition goes to Emily Chen for her innovative renewable energy project.",
+    },
+    {
+      id: 2,
+      title: "New Sports Facility Opening Next Month",
+      date: "June 10, 2023",
+      content:
+        "We're excited to announce the grand opening of our state-of-the-art sports complex, featuring an Olympic-sized swimming pool and modern gymnasium.",
+    },
+    {
+      id: 3,
+      title: "Summer Reading Program Kicks Off",
+      date: "June 5, 2023",
+      content:
+        "Join us for our annual summer reading challenge! Students who complete the program will be eligible for exciting prizes and recognition at our fall assembly.",
+    },
+  ];
+
   return (
     <div>
       <StyledHero>
@@ -51,13 +87,19 @@ const HomePage = () => {
             <Card>
               <CardContent>
                 <Typography variant="h5" gutterBottom>
-                  Student Life
+                  Help Us Out
                 </Typography>
                 <Typography>
-                  Explore our vibrant community and diverse extracurricular activities.
+                  Learn how you can contribute through donations, volunteering, or joining in our
+                  community events.
                 </Typography>
-                <Button variant="contained" color="primary" sx={{ mt: 2 }}>
-                  Discover
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{ mt: 2 }}
+                  onClick={() => navigate("/contribute")}
+                >
+                  Contribute
                 </Button>
               </CardContent>
             </Card>
@@ -80,35 +122,55 @@ const HomePage = () => {
           </Grid>
         </Grid>
 
-        <Grid container spacing={4} sx={{ mt: 4 }}>
-          <Grid item xs={12} md={6}>
+        <Grid
+          container
+          spacing={4}
+          sx={{
+            mt: 4,
+            flexGrow: 1,
+            minHeight: "calc(100vh - 400px)", // Adjust this value based on your header height
+          }}
+        >
+          <Grid item xs={12}>
             <Typography variant="h4" gutterBottom>
               Latest News
             </Typography>
-            <Typography paragraph>
+            <Typography paragraph className="news-start">
               Stay updated with the latest events, achievements, and announcements from our school
               community.
+              <Button variant="outlined" color="primary" sx={{ mb: 4 }}>
+                View All News
+              </Button>
             </Typography>
-            <Button variant="outlined" color="primary">
-              View All News
-            </Button>
           </Grid>
 
-          <Grid item xs={12} md={6}>
-            <Typography variant="h4" gutterBottom>
-              Upcoming Events
-            </Typography>
-            <Typography paragraph>
-              Check out our calendar for upcoming school events, parent meetings, and activities.
-            </Typography>
-            <Button variant="outlined" color="primary">
-              View Calendar
-            </Button>
-          </Grid>
+          {/* News Items */}
+          {newsItems.map((news) => (
+            <Grid item xs={12} md={4} key={news.id}>
+              <Card elevation={2}>
+                <CardContent>
+                  <Typography variant="h6" gutterBottom>
+                    {news.title}
+                  </Typography>
+                  <Typography variant="caption" color="text.secondary" display="block" gutterBottom>
+                    {news.date}
+                  </Typography>
+                  <Divider sx={{ my: 1 }} />
+                  <Typography variant="body2" paragraph>
+                    {news.content}
+                  </Typography>
+                  <Box sx={{ textAlign: "right" }}>
+                    <Button size="small" color="primary">
+                      Read More
+                    </Button>
+                  </Box>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
         </Grid>
       </Container>
     </div>
   );
 };
-
 export default HomePage;
