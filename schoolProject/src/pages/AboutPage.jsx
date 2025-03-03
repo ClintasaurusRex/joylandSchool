@@ -1,82 +1,97 @@
-function AboutPage() {
+import { Box, Container, Typography, Grid, Paper } from "@mui/material";
+import { styled } from "@mui/material/styles";
+
+const StyledPaper = styled(Paper)(({ theme }) => ({
+  padding: theme.spacing(3),
+  height: "100%",
+  backgroundColor: "#f5f5f5",
+}));
+
+const AboutPage = () => {
   return (
-    <div className="container mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold mb-8 text-center">About Our School</h1>
+    <Box sx={{ py: 6 }}>
+      <Container maxWidth="lg">
+        <Typography variant="h2" component="h1" align="center" gutterBottom>
+          About Our School
+        </Typography>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-        <div>
-          <h2 className="text-2xl font-bold mb-4">Our History</h2>
-          <p className="mb-4">
-            Founded in [year], School Name has a rich history of academic excellence and community
-            service. What began as a small institution with just a handful of students has grown
-            into one of the region's most respected educational establishments.
-          </p>
-          <p>
-            Throughout our history, we have remained committed to our founding principles of
-            fostering intellectual curiosity, personal growth, and social responsibility.
-          </p>
-        </div>
-        <div className="bg-gray-200 rounded-lg">
-          {/* Placeholder for school image */}
-          <div className="h-full w-full flex items-center justify-center">
-            <p className="text-gray-500">School Building Image</p>
-          </div>
-        </div>
-      </div>
+        <Typography variant="h5" color="textSecondary" align="center" paragraph sx={{ mb: 6 }}>
+          Providing Quality Education Since 1990
+        </Typography>
 
-      <div className="mb-16">
-        <h2 className="text-2xl font-bold mb-4 text-center">Our Mission & Vision</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-blue-50 p-6 rounded-lg">
-            <h3 className="text-xl font-bold mb-3">Mission</h3>
-            <p>
-              To provide a nurturing and challenging educational environment where students can
-              develop intellectually, emotionally, and socially, preparing them to be responsible
-              global citizens.
-            </p>
-          </div>
-          <div className="bg-green-50 p-6 rounded-lg">
-            <h3 className="text-xl font-bold mb-3">Vision</h3>
-            <p>
-              To be a leading educational institution that inspires a lifelong love of learning,
-              fosters innovation, and cultivates leaders who will positively impact their
-              communities and the world.
-            </p>
-          </div>
-        </div>
-      </div>
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={6}>
+            <StyledPaper>
+              <Typography variant="h4" gutterBottom>
+                Our Mission
+              </Typography>
+              <Typography paragraph>
+                We are committed to providing an exceptional learning environment where students can
+                develop their intellectual, social, and creative abilities to their fullest
+                potential.
+              </Typography>
+            </StyledPaper>
+          </Grid>
 
-      <div>
-        <h2 className="text-2xl font-bold mb-6 text-center">Our Leadership Team</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Sample staff - replace with real data */}
-          <div className="text-center">
-            <div className="bg-gray-200 h-48 w-48 rounded-full mx-auto mb-4">
-              {/* Placeholder for staff photo */}
-            </div>
-            <h3 className="text-xl font-bold">Jane Doe</h3>
-            <p className="text-blue-700">Principal</p>
-          </div>
+          <Grid item xs={12} md={6}>
+            <StyledPaper>
+              <Typography variant="h4" gutterBottom>
+                Our Vision
+              </Typography>
+              <Typography paragraph>
+                To be a leading educational institution that inspires and empowers students to
+                become innovative thinkers, responsible citizens, and future leaders.
+              </Typography>
+            </StyledPaper>
+          </Grid>
 
-          <div className="text-center">
-            <div className="bg-gray-200 h-48 w-48 rounded-full mx-auto mb-4">
-              {/* Placeholder for staff photo */}
-            </div>
-            <h3 className="text-xl font-bold">John Smith</h3>
-            <p className="text-blue-700">Vice Principal</p>
-          </div>
+          <Grid item xs={12}>
+            <StyledPaper>
+              <Typography variant="h4" gutterBottom>
+                Core Values
+              </Typography>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6} md={3}>
+                  <Typography variant="h6">Excellence</Typography>
+                  <Typography>Striving for the highest standards in education</Typography>
+                </Grid>
+                <Grid item xs={12} sm={6} md={3}>
+                  <Typography variant="h6">Integrity</Typography>
+                  <Typography>Maintaining strong ethical principles</Typography>
+                </Grid>
+                <Grid item xs={12} sm={6} md={3}>
+                  <Typography variant="h6">Innovation</Typography>
+                  <Typography>Embracing new ideas and methods</Typography>
+                </Grid>
+                <Grid item xs={12} sm={6} md={3}>
+                  <Typography variant="h6">Community</Typography>
+                  <Typography>Building strong relationships</Typography>
+                </Grid>
+              </Grid>
+            </StyledPaper>
+          </Grid>
 
-          <div className="text-center">
-            <div className="bg-gray-200 h-48 w-48 rounded-full mx-auto mb-4">
-              {/* Placeholder for staff photo */}
-            </div>
-            <h3 className="text-xl font-bold">Mary Johnson</h3>
-            <p className="text-blue-700">Academic Director</p>
-          </div>
-        </div>
-      </div>
-    </div>
+          <Grid item xs={12}>
+            <StyledPaper>
+              <Typography variant="h4" gutterBottom>
+                Our History
+              </Typography>
+              <Typography paragraph>
+                Founded in 1990, our school has grown from a small local institution to a renowned
+                center of learning. Over the years, we have consistently evolved our teaching
+                methods and facilities while maintaining our commitment to academic excellence and
+                personal development.
+              </Typography>
+              <Typography paragraph>
+                Today, we proudly serve over 1,000 students and employ more than 100 dedicated
+                faculty members who are experts in their respective fields.
+              </Typography>
+            </StyledPaper>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
   );
-}
+};
 
 export default AboutPage;
