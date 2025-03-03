@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Typography, Grid, Card, CardContent, Button } from "@mui/material";
 import { styled } from "@mui/system";
+import { useNavigate } from "react-router-dom";
 
 const StyledHero = styled("div")({
   background: "linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)",
@@ -10,6 +11,7 @@ const StyledHero = styled("div")({
 });
 
 const HomePage = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <StyledHero>
@@ -33,7 +35,12 @@ const HomePage = () => {
                   Our commitment to high academic standards ensures students reach their full
                   potential.
                 </Typography>
-                <Button variant="contained" color="primary" sx={{ mt: 2 }}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{ mt: 2 }}
+                  onClick={() => navigate("/academic")}
+                >
                   Learn More
                 </Button>
               </CardContent>
