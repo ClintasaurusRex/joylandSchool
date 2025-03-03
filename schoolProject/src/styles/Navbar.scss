@@ -3,7 +3,7 @@
   font-family: "Arial", sans-serif;
 }
 
-.navbar {
+.navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,6 +12,7 @@
   padding: 0 2rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: relative;
+  list-style: none;
   padding: 26px;
 }
 
@@ -25,15 +26,13 @@
   margin: 0;
   padding: 1rem 0;
 }
-
 .navbar-links {
   display: flex;
-  list-style: none;
+  list-style: none; /* This removes the bullet points */
   margin: 0;
   padding: 0;
   font-size: 24px;
 }
-
 .navbar-links li {
   padding: 0 1rem;
 }
@@ -51,27 +50,8 @@
   color: #f0f0f0;
 }
 
-.hamburger-menu {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 24px;
-  cursor: pointer;
-}
-
-.hamburger-line {
-  width: 30px;
-  height: 3px;
-  background-color: white;
-  transition: all 0.3s ease;
-}
-
 /* Responsive design */
 @media (max-width: 768px) {
-  .hamburger-menu {
-    display: flex;
-  }
-
   .navbar-links {
     position: absolute;
     top: 100%;
@@ -99,37 +79,73 @@
     padding: 0.75rem 0;
   }
 
-  /* Hamburger animation */
-  .hamburger-line.open:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+  /* Replace the hamburger-menu styles with these */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
   }
 
-  .hamburger-line.open:nth-child(2) {
-    opacity: 0;
+  .toggle-line {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
   }
 
-  .hamburger-line.open:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
+  @media (max-width: 768px) {
+    .nav-toggle {
+      display: flex;
+      z-index: 1001;
+    }
+
+    /* Make sure navbar-links doesn't show by default on mobile */
+    .navbar-links {
+      display: none;
+    }
+
+    /* Show navbar-links when open class is applied */
+    .navbar-links.open {
+      display: flex;
+      padding: 1rem 0;
+    }
+
+    /* Update these selectors to match the new class names */
+    .toggle-line.open:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .toggle-line.open:nth-child(2) {
+      opacity: 0;
+    }
+
+    .toggle-line.open:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
   }
-}
-.nav-link {
-  position: relative;
-  text-decoration: none;
-  color: inherit;
-}
+  .nav-link {
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    text-decoration: none;
+  }
 
-.nav-link::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: currentColor;
-  transition: width 0.3s ease-in-out;
-}
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: currentColor;
+    transition: width 0.3s ease-in-out;
+  }
 
-.nav-link:hover::after {
-  width: 100%;
+  .nav-link:hover::after {
+    width: 100%;
+  }
 }

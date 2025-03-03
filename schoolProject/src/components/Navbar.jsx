@@ -1,5 +1,5 @@
-import { useState } from "react";
 import "../styles/Navbar.scss";
+import { useState } from "react";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,20 +10,20 @@ function Navbar() {
 
   return (
     <div className="nav-container">
-      <nav className="navbar">
+      <nav className="navbar-container">
         <div className="navbar-brand">
           <a href="/">
             <h1>NewJoyland</h1>
           </a>
         </div>
 
-        <div className="hamburger-menu" onClick={toggleMenu}>
-          <div className={`hamburger-line ${isMenuOpen ? "open" : ""}`}></div>
-          <div className={`hamburger-line ${isMenuOpen ? "open" : ""}`}></div>
-          <div className={`hamburger-line ${isMenuOpen ? "open" : ""}`}></div>
+        <div className="nav-toggle" onClick={toggleMenu}>
+          <div className={`toggle-line ${isMenuOpen ? "open" : ""}`}></div>
+          <div className={`toggle-line ${isMenuOpen ? "open" : ""}`}></div>
+          <div className={`toggle-line ${isMenuOpen ? "open" : ""}`}></div>
         </div>
 
-        <ul className={`navbar-links ${isMenuOpen ? "open" : ""}`}>
+        <div className={`navbar-links ${isMenuOpen ? "open" : ""}`}>
           <li>
             <a className="nav-link" href="/">
               Home
@@ -59,7 +59,7 @@ function Navbar() {
               Contact Us
             </a>
           </li>
-        </ul>
+        </div>
       </nav>
 
       <main>{/* Your page content goes here */}</main>
