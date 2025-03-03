@@ -63,7 +63,7 @@ const HomePage = () => {
         <Grid container spacing={4}>
           <Grid item xs={12} md={4}>
             <Card>
-              <CardContent>
+              <CardContent className="content-cart">
                 <Typography variant="h5" gutterBottom>
                   Academic Excellence
                 </Typography>
@@ -72,6 +72,7 @@ const HomePage = () => {
                   potential.
                 </Typography>
                 <Button
+                  className="content-card-btn"
                   variant="contained"
                   color="primary"
                   sx={{ mt: 2 }}
@@ -85,7 +86,7 @@ const HomePage = () => {
 
           <Grid item xs={12} md={4}>
             <Card>
-              <CardContent>
+              <CardContent className="content-cart">
                 <Typography variant="h5" gutterBottom>
                   Help Us Out
                 </Typography>
@@ -94,6 +95,7 @@ const HomePage = () => {
                   community events.
                 </Typography>
                 <Button
+                  className="content-card-btn"
                   variant="contained"
                   color="primary"
                   sx={{ mt: 2 }}
@@ -107,14 +109,20 @@ const HomePage = () => {
 
           <Grid item xs={12} md={4}>
             <Card>
-              <CardContent>
+              <CardContent className="content-cart">
                 <Typography variant="h5" gutterBottom>
                   Admissions
                 </Typography>
                 <Typography>
                   Join our community of learners. Applications now open for the next academic year.
                 </Typography>
-                <Button variant="contained" color="primary" sx={{ mt: 2 }}>
+                <Button
+                  className="content-card-btn"
+                  variant="contained"
+                  color="primary"
+                  sx={{ mt: 2 }}
+                  onClick={() => navigate("/admission")}
+                >
                   Apply Now
                 </Button>
               </CardContent>
@@ -128,7 +136,7 @@ const HomePage = () => {
           sx={{
             mt: 4,
             flexGrow: 1,
-            minHeight: "calc(100vh - 400px)", // Adjust this value based on your header height
+            minHeight: "calc(100vh - 400px)",
           }}
         >
           <Grid item xs={12}>

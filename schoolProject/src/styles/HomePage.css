@@ -2,3 +2,12 @@
   display: flex;
   justify-content: space-between;
 }
+.content-cart {
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card-content-top {
+  flex-grow: 1;
+}
