@@ -30,27 +30,27 @@ function Navbar() {
             </a>
           </li>
           <li>
-            <a class="nav-link" href="/attractions">
+            <a class="nav-link" href="/about">
               About
             </a>
           </li>
           <li>
-            <a class="nav-link" href="/tickets">
+            <a class="nav-link" href="/admission">
               Admission
             </a>
           </li>
           <li>
-            <a class="nav-link" href="/events">
+            <a class="nav-link" href="/academic">
               Academic
             </a>
           </li>
           <li>
-            <a class="nav-link" href="/contact">
+            <a class="nav-link" href="/sports">
               Sports
             </a>
           </li>
           <li>
-            <a class="nav-link" href="/contact">
+            <a class="nav-link" href="/contribute">
               Contribute
             </a>
           </li>
