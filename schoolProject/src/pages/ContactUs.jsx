@@ -111,13 +111,13 @@ const ContactUs = () => {
       <div className="contact-info">
         <h2>Other Ways to Contact Us</h2>
         <p>
-          <strong>Address:</strong> 123 School Lane, Joyland City
+          <strong>POSTALL ADDRESS: </strong> P.O BOX 86713-80100 MOMBASA, KENYA
         </p>
         <p>
-          <strong>Phone:</strong> (555) 123-4567
+          <strong>Call/WhatsApp:</strong> +254723024301
         </p>
         <p>
-          <strong>Email:</strong> info@joylandschool.edu
+          <strong>Email:</strong> info@joylandschools.com
         </p>
       </div>
     </div>
