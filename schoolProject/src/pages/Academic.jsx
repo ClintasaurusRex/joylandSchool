@@ -14,7 +14,7 @@ const Academic = () => {
           <Card className="academic-cards">
             <CardContent>
               <Typography variant="h5" component="h2" gutterBottom>
-                Subjects for Pre-Primary (P.P) 1, 2
+                <strong>Subjects for Pre-Primary (P.P) 1, 2</strong>
               </Typography>
               <Typography variant="body1" color="text.secondary">
                 Our pre-primary curriculum includes:
@@ -35,7 +35,7 @@ const Academic = () => {
           <Card className="academic-cards">
             <CardContent>
               <Typography variant="h5" component="h2" gutterBottom>
-                Subjects for Grades 1, 2, 3
+                <strong>Subjects for Grades 1, 2, 3</strong>
               </Typography>
               <Typography variant="body1" color="text.secondary">
                 Our lower primary curriculum includes:
@@ -57,7 +57,7 @@ const Academic = () => {
           <Card className="academic-cards">
             <CardContent>
               <Typography variant="h5" component="h2" gutterBottom>
-                Subjects for Grades 4, 5, 6
+                <strong>Subjects for Grades 4, 5, 6</strong>
               </Typography>
               <Typography variant="body1" color="text.secondary">
                 Our middle primary curriculum includes:
@@ -81,7 +81,7 @@ const Academic = () => {
           <Card className="academic-cards">
             <CardContent>
               <Typography variant="h5" component="h2" gutterBottom>
-                Subjects for Grades 7, 8, 9
+                <strong>Subjects for Grades 7, 8, 9</strong>
               </Typography>
               <Typography variant="body1" color="text.secondary">
                 Our upper primary curriculum includes:
