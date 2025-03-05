@@ -14,21 +14,39 @@ const Academic = () => {
           <Card className="academic-cards">
             <CardContent>
               <Typography variant="h5" component="h2" gutterBottom>
-                Subjects for Grades 7, 8, 9
+                Subjects for Pre-Primary (P.P) 1, 2
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                Our upper primary curriculum includes:
+                Our pre-primary curriculum includes:
+              </Typography>
+              <br />
+              <ul>
+                <li>Language Activities</li>
+                <li>Mathematics Activities</li>
+                <li>Creative Activities</li>
+                <li>Environmental Activities</li>
+                <li>Religious Activities</li>
+              </ul>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={12} md={6}>
+          <Card className="academic-cards">
+            <CardContent>
+              <Typography variant="h5" component="h2" gutterBottom>
+                Subjects for Grades 1, 2, 3
+              </Typography>
+              <Typography variant="body1" color="text.secondary">
+                Our lower primary curriculum includes:
               </Typography>
               <br />
               <ul>
                 <li>English</li>
                 <li>Kiswahili</li>
                 <li>Mathematics</li>
-                <li>Agriculture</li>
-                <li>Social Studies</li>
-                <li>Integrated Science</li>
-                <li>Creative Arts and Sports</li>
-                <li>Pre-Technical Studies</li>
+                <li>Environmental Activities</li>
+                <li>Creative Activities</li>
                 <li>Religious Studies</li>
               </ul>
             </CardContent>
@@ -63,40 +81,22 @@ const Academic = () => {
           <Card className="academic-cards">
             <CardContent>
               <Typography variant="h5" component="h2" gutterBottom>
-                Subjects for Grades 1, 2, 3
+                Subjects for Grades 7, 8, 9
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                Our lower primary curriculum includes:
+                Our upper primary curriculum includes:
               </Typography>
               <br />
               <ul>
                 <li>English</li>
                 <li>Kiswahili</li>
                 <li>Mathematics</li>
-                <li>Environmental Activities</li>
-                <li>Creative Activities</li>
+                <li>Agriculture</li>
+                <li>Social Studies</li>
+                <li>Integrated Science</li>
+                <li>Creative Arts and Sports</li>
+                <li>Pre-Technical Studies</li>
                 <li>Religious Studies</li>
-              </ul>
-            </CardContent>
-          </Card>
-        </Grid>
-
-        <Grid item xs={12} md={6}>
-          <Card className="academic-cards">
-            <CardContent>
-              <Typography variant="h5" component="h2" gutterBottom>
-                Subjects for Pre-Primary (P.P) 1, 2
-              </Typography>
-              <Typography variant="body1" color="text.secondary">
-                Our pre-primary curriculum includes:
-              </Typography>
-              <br />
-              <ul>
-                <li>Language Activities</li>
-                <li>Mathematics Activities</li>
-                <li>Creative Activities</li>
-                <li>Environmental Activities</li>
-                <li>Religious Activities</li>
               </ul>
             </CardContent>
           </Card>
