@@ -5,9 +5,14 @@
   justify-content: center;
   padding-top: 20px;
   font-family: $font;
+  gap: 100;
 }
 
-.onsite-grid {
+.job-grid {
   justify-content: center;
   padding: 2.5em;
+}
+
+.remote-card {
+  margin: 50px;
 }
