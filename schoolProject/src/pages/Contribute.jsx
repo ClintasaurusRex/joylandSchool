@@ -1,253 +1,100 @@
-import React, { useState } from "react";
-import { Container, Row, Col, Card, Form, Button, Alert } from "react-bootstrap";
-import { FaHeart, FaHandsHelping, FaCalendarAlt, FaDollarSign } from "react-icons/fa";
+import { Box, Typography, Card, CardContent, Grid2 } from "@mui/material";
 import "../styles/Contribute.scss";
 
 const Contribute = () => {
-  const [volunteerForm, setVolunteerForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    interests: "",
-    availability: "",
-  });
+  const opportunities = [
+    {
+      title: "Teaching Assistant",
+      description:
+        "Support teachers by preparing lessons, encouraging students, marking assignments, awarding marks, and teaching. Help improve student performance, boost motivation, and enhance structured learning.",
+    },
+    {
+      title: "Extracurricular Assistant",
+      description:
+        "Assist in either coaching football, athletics, music, drama, scouting, or environmental activities. Foster teamwork, creativity, discipline, and skill-building among students.",
+    },
+    {
+      title: "Administrative Assistant",
+      description:
+        "Provide general office support by organizing files, managing communications, and assisting with scheduling. Ensure smooth operations, efficiency, and effective school administration.",
+    },
+    {
+      title: "Artisans",
+      description:
+        "Carpenters make or repair furniture, plasterers plaster walls, tile setters lay tiles, and painters paint walls. Improve learning spaces, safety, and overall school aesthetics.",
+    },
+    {
+      title: "Community Workers",
+      description:
+        "Social workers engage the community in supporting girls' education, while photographers capture impactful photos and videos. Strengthen fundraising, awareness, and documentation of school programs.",
+    },
+    {
+      title: "Health Workers",
+      description:
+        "Assist with either health screenings, refer sick students to hospitals, implement health education programs, or prepare nutritious meals for nursery children. Improve student well-being, nutrition, and access to healthcare.",
+    },
+    {
+      title: "Gardening Assistant",
+      description:
+        "Plant and maintain trees and flowers within the school, creating a greener, healthier environment. Enhance sustainability, aesthetics, and environmental awareness.",
+    },
+  ];
 
-  const [donationAmount, setDonationAmount] = useState("");
-  const [customAmount, setCustomAmount] = useState("");
-  const [showThankYou, setShowThankYou] = useState(false);
-
-  const handleVolunteerChange = (e) => {
-    const { name, value } = e.target;
-    setVolunteerForm((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleVolunteerSubmit = (e) => {
-    e.preventDefault();
-    console.log("Volunteer form submitted:", volunteerForm);
-    // Here you would typically send the form data to your backend
-    setVolunteerForm({
-      name: "",
-      email: "",
-      phone: "",
-      interests: "",
-      availability: "",
-    });
-    setShowThankYou(true);
-    setTimeout(() => setShowThankYou(false), 5000);
-  };
-
-  const handleDonationSubmit = (e) => {
-    e.preventDefault();
-    const finalAmount = donationAmount === "custom" ? customAmount : donationAmount;
-    console.log("Donation submitted:", finalAmount);
-    // Here you would typically redirect to a payment processor
-    setDonationAmount("");
-    setCustomAmount("");
-    setShowThankYou(true);
-    setTimeout(() => setShowThankYou(false), 5000);
-  };
+  const remoteOpportunities = [
+    {
+      title: "Grant Writer & Fundraiser",
+      description:
+        "Raise funds to build three additional toilets, ensuring safe and hygienic sanitation for students. Reduce congestion, prevent the spread of intestinal worms, and strengthen infrastructure to improve health conditions and enhance student safety.",
+    },
+    {
+      title: "Social Media & Content Creator",
+      description:
+        "Manage social media platforms, create compelling content, and promote school initiatives to increase awareness and support. Boost engagement, attract donors, and inspire community involvement to strengthen educational programs and infrastructure.",
+    },
+  ];
 
   return (
-    <Container className="contribute-container py-5">
-      {showThankYou && (
-        <Alert variant="success" onClose={() => setShowThankYou(false)} dismissible>
-          Thank you for your support! Your contribution helps make Joyland School a better place.
-        </Alert>
-      )}
+    <Box sx={{ p: 4 }}>
+      <Card>
+        <Typography className="onsite-card" variant="h3" gutterBottom>
+          Onsite Volunteer Opportunities
+        </Typography>
+        <Grid2 className="onsite-grid" container spacing={3}>
+          {opportunities.map((opportunity, index) => (
+            <Grid2 item size={{ xs: 12, sm: 6, md: 7, lg: 3 }} key={index}>
+              <Card sx={{ height: "100%" }}>
+                <CardContent>
+                  <Typography variant="h5" gutterBottom>
+                    {opportunity.title}
+                  </Typography>
+                  <Typography variant="body1">{opportunity.description}</Typography>
+                </CardContent>
+              </Card>
+            </Grid2>
+          ))}
+        </Grid2>
+      </Card>
 
-      <div className="text-center mb-5">
-        <h1 className="display-4">Support Joyland School</h1>
-        <p className="lead">
-          Your contributions help us provide quality education and enriching experiences for our
-          students.
-        </p>
-      </div>
-
-      <Row className="mb-5">
-        <Col md={6} className="mb-4">
-          <Card className="h-100 shadow-sm">
-            <Card.Body>
-              <div className="text-center mb-4">
-                <FaHandsHelping className="icon-large text-primary" />
-                <h2>Volunteer</h2>
-                <p>Share your time and talents with our school community</p>
-              </div>
-
-              <div className="mb-4">
-                <h4>Volunteer Opportunities</h4>
-                <ul>
-                  <li>Classroom Assistant</li>
-                  <li>Library Helper</li>
-                  <li>Event Planning Committee</li>
-                  <li>Garden & Grounds Maintenance</li>
-                  <li>Tutoring & Mentorship</li>
-                  <li>Parent-Teacher Association</li>
-                </ul>
-              </div>
-
-              <Form onSubmit={handleVolunteerSubmit}>
-                <Form.Group className="mb-3">
-                  <Form.Label>Full Name</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="name"
-                    value={volunteerForm.name}
-                    onChange={handleVolunteerChange}
-                    required
-                  />
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control
-                    type="email"
-                    name="email"
-                    value={volunteerForm.email}
-                    onChange={handleVolunteerChange}
-                    required
-                  />
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                  <Form.Label>Phone Number</Form.Label>
-                  <Form.Control
-                    type="tel"
-                    name="phone"
-                    value={volunteerForm.phone}
-                    onChange={handleVolunteerChange}
-                  />
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                  <Form.Label>Areas of Interest</Form.Label>
-                  <Form.Control
-                    as="select"
-                    name="interests"
-                    value={volunteerForm.interests}
-                    onChange={handleVolunteerChange}
-                    required
-                  >
-                    <option value="">Select an option</option>
-                    <option value="classroom">Classroom Assistant</option>
-                    <option value="library">Library Helper</option>
-                    <option value="events">Event Planning</option>
-                    <option value="garden">Garden & Grounds</option>
-                    <option value="tutoring">Tutoring & Mentorship</option>
-                    <option value="pta">PTA</option>
-                    <option value="other">Other</option>
-                  </Form.Control>
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                  <Form.Label>
-                    Availability <FaCalendarAlt className="ms-1" />
-                  </Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    rows={3}
-                    name="availability"
-                    placeholder="Please let us know when you're available to volunteer"
-                    value={volunteerForm.availability}
-                    onChange={handleVolunteerChange}
-                    required
-                  />
-                </Form.Group>
-
-                <Button variant="primary" type="submit" className="w-100">
-                  Submit Volunteer Application
-                </Button>
-              </Form>
-            </Card.Body>
-          </Card>
-        </Col>
-
-        <Col md={6} className="mb-4">
-          <Card className="h-100 shadow-sm">
-            <Card.Body>
-              <div className="text-center mb-4">
-                <FaHeart className="icon-large text-danger" />
-                <h2>Donate</h2>
-                <p>Your financial support makes a difference</p>
-              </div>
-
-              <div className="mb-4">
-                <h4>How Your Donation Helps</h4>
-                <ul>
-                  <li>Classroom supplies and learning materials</li>
-                  <li>Technology upgrades</li>
-                  <li>Scholarships for students in need</li>
-                  <li>Field trips and enrichment activities</li>
-                  <li>Teacher development programs</li>
-                  <li>Campus improvement projects</li>
-                </ul>
-              </div>
-
-              <Form onSubmit={handleDonationSubmit}>
-                <Form.Group className="mb-4">
-                  <Form.Label>
-                    Donation Amount <FaDollarSign className="ms-1" />
-                  </Form.Label>
-                  <div className="d-flex flex-wrap gap-2 mb-3">
-                    {["25", "50", "100", "250", "500", "custom"].map((amount) => (
-                      <Button
-                        key={amount}
-                        variant={donationAmount === amount ? "primary" : "outline-primary"}
-                        className="donation-btn"
-                        onClick={() => setDonationAmount(amount)}
-                      >
-                        {amount === "custom" ? "Custom" : `$${amount}`}
-                      </Button>
-                    ))}
-                  </div>
-
-                  {donationAmount === "custom" && (
-                    <Form.Control
-                      type="number"
-                      placeholder="Enter custom amount"
-                      className="mb-3"
-                      min="1"
-                      value={customAmount}
-                      onChange={(e) => setCustomAmount(e.target.value)}
-                      required
-                    />
-                  )}
-                </Form.Group>
-
-                <div className="mb-4">
-                  <h5>Other Ways to Donate</h5>
-                  <p>
-                    In addition to online donations, we accept checks made payable to "Joyland
-                    School Foundation" mailed to our address, or you can contact our Development
-                    Office at (555) 123-4567 for information about planned giving and corporate
-                    matching programs.
-                  </p>
-                </div>
-
-                <Button
-                  variant="success"
-                  type="submit"
-                  className="w-100"
-                  disabled={!donationAmount || (donationAmount === "custom" && !customAmount)}
-                >
-                  Proceed to Donation
-                </Button>
-              </Form>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-
-      <div className="text-center mt-5 pt-3 border-top">
-        <h3>Questions About Contributing?</h3>
-        <p>
-          Contact our Community Relations Office at <strong>(555) 123-4567</strong> or email us at{" "}
-          <a href="mailto:contribute@joylandschool.org">contribute@joylandschool.org</a>
-        </p>
-      </div>
-    </Container>
+      <Card>
+        <Typography variant="h3" sx={{ mt: 6, mb: 3 }}>
+          Remote Volunteer Opportunities
+        </Typography>
+        <Grid2 container spacing={3}>
+          {remoteOpportunities.map((opportunity, index) => (
+            <Grid2 size={3} key={index}>
+              <Card sx={{ height: "100%" }}>
+                <CardContent>
+                  <Typography variant="h5" gutterBottom>
+                    {opportunity.title}
+                  </Typography>
+                  <Typography variant="body1">{opportunity.description}</Typography>
+                </CardContent>
+              </Card>
+            </Grid2>
+          ))}
+        </Grid2>
+      </Card>
+    </Box>
   );
 };
 
