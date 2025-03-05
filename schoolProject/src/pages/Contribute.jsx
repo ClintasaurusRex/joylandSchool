@@ -1,7 +1,9 @@
-import { Box, Typography, Card, CardContent, Grid2 } from "@mui/material";
+import { Box, Typography, Card, CardContent, Grid2, Button } from "@mui/material";
 import "../styles/Contribute.scss";
+import { useNavigate } from "react-router-dom";
 
 const Contribute = () => {
+  const navigate = useNavigate();
   const opportunities = [
     {
       title: "Teaching Assistant",
@@ -72,6 +74,16 @@ const Contribute = () => {
               </Card>
             </Grid2>
           ))}
+
+          <Button
+            className="content-card-btn"
+            variant="contained"
+            color="primary"
+            sx={{ mt: 20 }}
+            onClick={() => navigate("/contact")}
+          >
+            Learn More
+          </Button>
         </Grid2>
       </Card>
 
@@ -92,6 +104,15 @@ const Contribute = () => {
               </Card>
             </Grid2>
           ))}
+          <Button
+            className="content-card-btn"
+            variant="contained"
+            color="primary"
+            sx={{ mt: 20 }}
+            onClick={() => navigate("/contact")}
+          >
+            Learn More
+          </Button>
         </Grid2>
       </Card>
     </Box>
