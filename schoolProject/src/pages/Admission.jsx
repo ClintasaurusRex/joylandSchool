@@ -1,4 +1,17 @@
 import React, { useState } from "react";
+import {
+  Container,
+  Paper,
+  Typography,
+  TextField,
+  Grid,
+  Button,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Box,
+} from "@mui/material";
 
 const Admission = () => {
   const [formData, setFormData] = useState({
@@ -22,187 +35,175 @@ const Admission = () => {
       ...prevState,
       [name]: value,
     }));
+    console.log(setFormData);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
     console.log("Form submitted:", formData);
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-3xl mx-auto bg-white rounded-lg shadow p-8">
-        <h2 className="text-3xl font-bold text-center mb-8">Student Admission Form</h2>
+    <Container component="main" maxWidth="md" sx={{ mb: 4 }}>
+      <Paper elevation={3} sx={{ p: 4, mt: 8 }}>
+        <Typography component="h1" variant="h4" align="center" gutterBottom>
+          Student Admission Form
+        </Typography>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700">First Name</label>
-              <input
-                type="text"
+        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 4 }}>
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                fullWidth
+                label="First Name"
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                required
               />
-            </div>
+            </Grid>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Last Name</label>
-              <input
-                type="text"
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                fullWidth
+                label="Last Name"
                 name="lastName"
                 value={formData.lastName}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                required
               />
-            </div>
+            </Grid>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Date of Birth</label>
-              <input
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                fullWidth
                 type="date"
+                label="Date of Birth"
                 name="dateOfBirth"
                 value={formData.dateOfBirth}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                required
+                InputLabelProps={{ shrink: true }}
               />
-            </div>
+            </Grid>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Gender</label>
-              <select
-                name="gender"
-                value={formData.gender}
-                onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <InputLabel>Gender</InputLabel>
+                <Select
+                  name="gender"
+                  value={formData.gender}
+                  onChange={handleChange}
+                  label="Gender"
+                >
+                  <MenuItem value="male">Male</MenuItem>
+                  <MenuItem value="female">Female</MenuItem>
+                  <MenuItem value="other">Other</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+
+            <Grid item xs={12} sm={6}>
+              <TextField
                 required
-              >
-                <option value="">Select Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Email</label>
-              <input
-                type="email"
+                fullWidth
+                label="Email"
                 name="email"
+                type="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                required
               />
-            </div>
+            </Grid>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Phone Number</label>
-              <input
-                type="tel"
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                fullWidth
+                label="Phone"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                required
               />
-            </div>
+            </Grid>
 
-            <div className="col-span-2">
-              <label className="block text-sm font-medium text-gray-700">Address</label>
-              <textarea
+            <Grid item xs={12}>
+              <TextField
+                required
+                fullWidth
+                label="Address"
                 name="address"
+                multiline
+                rows={3}
                 value={formData.address}
                 onChange={handleChange}
-                rows="3"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                required
-              ></textarea>
-            </div>
+              />
+            </Grid>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Previous School</label>
-              <input
-                type="text"
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                fullWidth
+                label="Previous School"
                 name="previousSchool"
                 value={formData.previousSchool}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                required
               />
-            </div>
+            </Grid>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Grade Applying For</label>
-              <input
-                type="text"
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                fullWidth
+                label="Grade Applying For"
                 name="gradeApplying"
                 value={formData.gradeApplying}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                required
               />
-            </div>
+            </Grid>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Parent/Guardian Name
-              </label>
-              <input
-                type="text"
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                fullWidth
+                label="Parent Name"
                 name="parentName"
                 value={formData.parentName}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                required
               />
-            </div>
+            </Grid>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Parent/Guardian Phone
-              </label>
-              <input
-                type="tel"
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                fullWidth
+                label="Parent Phone"
                 name="parentPhone"
                 value={formData.parentPhone}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                required
               />
-            </div>
+            </Grid>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Parent/Guardian Email
-              </label>
-              <input
-                type="email"
+            <Grid item xs={12}>
+              <TextField
+                required
+                fullWidth
+                label="Parent Email"
                 name="parentEmail"
+                type="email"
                 value={formData.parentEmail}
                 onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                required
               />
-            </div>
-          </div>
+            </Grid>
 
-          <div className="flex justify-center">
-            <button
-              type="submit"
-              className="bg-indigo-600 text-white px-8 py-3 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-            >
-              Submit Application
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+            <Grid item xs={12}>
+              <Button type="submit" fullWidth variant="contained" size="large" sx={{ mt: 3 }}>
+                Submit Application
+              </Button>
+            </Grid>
+          </Grid>
+        </Box>
+      </Paper>
+    </Container>
   );
 };
 
