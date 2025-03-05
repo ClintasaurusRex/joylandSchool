@@ -5,3 +5,27 @@ $primary: #2f27ce;
 $secondary: #dddbff;
 $accent: #443dff;
 $font: "Libre Baskerville", sans-serif !important;
+
+// Kenya-inspired color palette
+$kenya-red: #be0027;
+$kenya-green: #006600;
+$kenya-black: #000000;
+$kenya-white: #ffffff;
+
+// Natural landscape colors
+$savanna-gold: #e3b23c;
+$acacia-green: #698c3a;
+$earth-brown: #8c5e2a;
+$sky-blue: #82c4fa;
+
+// School-specific colors
+$primary-color: $kenya-green;
+$secondary-color: $savanna-gold;
+$accent-color: $kenya-red;
+$background: #f5f3e9; // Light sand color for main background
+$text: #333333;
+
+// Section background colors
+$header-bg: rgba($kenya-white, 0.95);
+$footer-bg: rgba($kenya-green, 0.9);
+$highlight-section-bg: rgba($savanna-gold, 0.2);

@@ -15,25 +15,24 @@ function App() {
     <Router>
       <Navbar />
 
-      <Routes>
-        <Route index element={<HomePage />} />
-        <Route path="about" element={<AboutPage />} />
-        <Route path="admission" element={<Admission />} />
-        <Route path="academic" element={<Academic />} />
-        <Route path="sports" element={<Sports />} />
-        <Route path="contribute" element={<Contribute />} />
-        <Route path="contact" element={<Contact />} />
-      </Routes>
+      <div className="content-container">
+        <Routes>
+          <Route index element={<HomePage />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="admission" element={<Admission />} />
+          <Route path="academic" element={<Academic />} />
+          <Route path="sports" element={<Sports />} />
+          <Route path="contribute" element={<Contribute />} />
+          <Route path="contact" element={<Contact />} />
+        </Routes>
+
+        <footer>
+          <div className="container">
+            <p>© {new Date().getFullYear()} Joyland Prime Academy. All rights reserved.</p>
+          </div>
+        </footer>
+      </div>
     </Router>
   );
 }
 export default App;
-{
-  /* <Route index element={<Home />} />
-<Route path="about" element={<About />} />
-<Route path="admission" element={<Admission />} />
-<Route path="academic" element={<Academic />} />
-<Route path="sports" element={<Sports />} />
-<Route path="contribute" element={<Contribute />} />
-<Route path="contact" element={<Contact />} />  */
-}
