@@ -8,14 +8,20 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: $background;
 }
 .card-content-top {
   flex-grow: 1;
 }
 
+.styled-hero {
+  background-color: gold !important;
+}
+
 .hero-header {
   text-transform: uppercase;
   font-family: $font;
+
   // font-weight: 900;
   // background: linear-gradient(45deg, #2196f3 30%, #21cbf3 90%);
 }
@@ -31,15 +37,13 @@
     background-position: 0% 50%;
   }
 }
-
-.animated-gradient {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradientAnimation 15s ease infinite;
-  color: white;
-  padding: 4rem 0;
-  margin-bottom: 2rem;
 } */
-body {
-  font-family: "Libre Baskerville", serif;
-}
+
+// .animated-gradient {
+//   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+//   background-size: 400% 400%;
+//   animation: gradientAnimation 15s ease infinite;
+//   color: white;
+//   padding: 4rem 0;
+//   margin-bottom: 2rem;
+// }

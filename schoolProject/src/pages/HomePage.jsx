@@ -48,6 +48,7 @@ const HomePage = () => {
     },
   ];
 
+  // sx={{ background: "black" }}
   return (
     <div>
       <StyledHero>
