@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../styles/admission.css";
 import {
   Container,
   Paper,
@@ -45,7 +46,7 @@ const Admission = () => {
 
   return (
     <Container component="main" maxWidth="md" sx={{ mb: 4 }}>
-      <Paper elevation={3} sx={{ p: 4, mt: 8 }}>
+      <Paper className="admission-main" elevation={3} sx={{ p: 4, mt: 8 }}>
         <Typography component="h1" variant="h4" align="center" gutterBottom>
           Student Admission Form
         </Typography>
