@@ -12,6 +12,10 @@
   flex-grow: 1;
 }
 
+.hero-header {
+  text-transform: uppercase;
+}
+
 /* @keyframes gradientAnimation {
   0% {
     background-position: 0% 50%;

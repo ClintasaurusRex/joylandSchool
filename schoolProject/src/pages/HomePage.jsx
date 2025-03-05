@@ -54,10 +54,13 @@ const HomePage = () => {
         {/* <img src="/joylandschool.png" alt="joyland picture" className="logo-home" /> */}
 
         <Container>
-          <Typography variant="h2" gutterBottom>
-            Welcome to Our School
+          <Typography variant="h2" gutterBottom className="hero-header">
+            joyland prime academy
           </Typography>
-          <Typography variant="h5">Empowering minds, shaping futures</Typography>
+          <Typography variant="h5" className="hero-header">
+            {" "}
+            education is treasure
+          </Typography>
         </Container>
       </StyledHero>
 
