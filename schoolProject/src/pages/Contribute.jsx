@@ -54,7 +54,7 @@ const Contribute = () => {
   ];
 
   return (
-    <Box sx={{ p: 4 }}>
+    <Box sx={{ p: 6 }}>
       <Card>
         <Typography className="onsite-card" variant="h3" gutterBottom>
           Onsite Volunteer Opportunities
