@@ -1,9 +1,14 @@
+@import "./styles/variables";
+
 /* DO NOT DELETE * */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
-  font-family: "Libre Baskerville", serif;
+  font-family: $font;
+  color: $text;
+  background-color: $background;
 }

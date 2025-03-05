@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Card, Form, Button, Alert } from "react-bootstrap";
 import { FaHeart, FaHandsHelping, FaCalendarAlt, FaDollarSign } from "react-icons/fa";
-import "../styles/Contribute.css";
+import "../styles/Contribute.scss";
 
 const Contribute = () => {
   const [volunteerForm, setVolunteerForm] = useState({

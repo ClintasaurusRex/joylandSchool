@@ -1,6 +1,8 @@
+@use "./variables" as *;
+
 /* Navbar styles */
 .nav-container {
-  font-family: "Arial", sans-serif;
+  font-family: "Libre Baskerville", sans-serif !important;
 }
 
 .logo {
@@ -12,7 +14,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #1a73e8;
+  background-color: $primary;
   color: white;
   padding: 0 2rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -52,7 +54,7 @@
 }
 
 .navbar-links a:hover {
-  color: #f0f0f0;
+  color: $secondary;
 }
 
 .nav-link {
@@ -86,7 +88,7 @@
     left: 0;
     right: 0;
     flex-direction: column;
-    background-color: #1a73e8;
+    background-color: $primary;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;

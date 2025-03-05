@@ -1,3 +1,4 @@
+@use "./variables" as *;
 .news-start {
   display: flex;
   justify-content: space-between;
@@ -14,8 +15,9 @@
 
 .hero-header {
   text-transform: uppercase;
-  font-family: "Libre Baskerville", sans-serif !important;
-  font-weight: 900;
+  font-family: $font;
+  // font-weight: 900;
+  // background: linear-gradient(45deg, #2196f3 30%, #21cbf3 90%);
 }
 
 /* @keyframes gradientAnimation {

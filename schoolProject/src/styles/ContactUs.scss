@@ -1,7 +1,10 @@
+@use "./variables" as *;
+
 .contact-us-container {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  color: $text;
 }
 
 .contact-form {
@@ -16,18 +19,19 @@
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
+  font-family: "Libre Baskerville", sans-serif !important;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
   padding: 8px;
-  border: 1px solid #ddd;
+  border: 1px solid $secondary;
   border-radius: 4px;
 }
 
 .submit-button {
-  background-color: #4caf50;
+  background-color: $primary;
   color: white;
   padding: 10px 15px;
   border: none;
@@ -37,12 +41,12 @@
 }
 
 .submit-button:hover {
-  background-color: #45a049;
+  background-color: $accent;
 }
 
 .success-message {
-  background-color: #dff0d8;
-  color: #3c763d;
+  background-color: $secondary;
+  color: $primary;
   padding: 10px;
   margin-bottom: 20px;
   border-radius: 4px;
@@ -51,5 +55,5 @@
 .contact-info {
   margin-top: 30px;
   padding-top: 20px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid $secondary;
 }
