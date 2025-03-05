@@ -197,7 +197,14 @@ const Admission = () => {
             </Grid>
 
             <Grid item xs={12}>
-              <Button type="submit" fullWidth variant="contained" size="large" sx={{ mt: 3 }}>
+              <Button
+                onClick={() => console.log("Submit Btn Clicked")}
+                type="submit"
+                fullWidth
+                variant="contained"
+                size="large"
+                sx={{ mt: 3 }}
+              >
                 Submit Application
               </Button>
             </Grid>
