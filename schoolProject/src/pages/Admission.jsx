@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/admission.css";
+import "../styles/admission.scss";
 import {
   Container,
   Paper,

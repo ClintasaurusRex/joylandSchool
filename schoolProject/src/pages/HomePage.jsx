@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/system";
 import { useNavigate } from "react-router-dom";
-import "../styles/HomePage.css";
+import "../styles/HomePage.scss";
 
 const StyledHero = styled("div")({
   background: "linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)",
