@@ -3,7 +3,7 @@
   justify-content: space-between;
 }
 .content-cart {
-  height: 25vh;
+  height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -11,6 +11,13 @@
 .card-content-top {
   flex-grow: 1;
 }
+
+.hero-header {
+  text-transform: uppercase;
+  font-family: "Libre Baskerville", sans-serif !important;
+  font-weight: 900;
+}
+
 /* @keyframes gradientAnimation {
   0% {
     background-position: 0% 50%;
@@ -31,3 +38,6 @@
   padding: 4rem 0;
   margin-bottom: 2rem;
 } */
+body {
+  font-family: "Libre Baskerville", serif;
+}

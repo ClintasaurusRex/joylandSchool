@@ -1,5 +1,6 @@
 import "../styles/Navbar.scss";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,9 +13,9 @@ function Navbar() {
     <div className="nav-container">
       <nav className="navbar-container">
         <div className="navbar-brand">
-          <a href="/">
-            <h1>NewJoyland</h1>
-          </a>
+          <Link to="/">
+            <img src="/joylandschool.png" alt="joyland picture" className="logo" />
+          </Link>
         </div>
 
         <div className="nav-toggle" onClick={toggleMenu}>
@@ -25,44 +26,42 @@ function Navbar() {
 
         <div className={`navbar-links ${isMenuOpen ? "open" : ""}`}>
           <li>
-            <a className="nav-link" href="/">
+            <Link className="nav-link" to="/">
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="nav-link" href="/about">
+            <Link className="nav-link" to="/about">
               About
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="nav-link" href="/admission">
+            <Link className="nav-link" to="/admission">
               Admission
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="nav-link" href="/academic">
+            <Link className="nav-link" to="/academic">
               Academic
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="nav-link" href="/sports">
+            <Link className="nav-link" to="/sports">
               Sports
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="nav-link" href="/contribute">
+            <Link className="nav-link" to="/contribute">
               Contribute
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="nav-link" href="/contact">
+            <Link className="nav-link" to="/contact">
               Contact Us
-            </a>
+            </Link>
           </li>
         </div>
       </nav>
-
-      <main>{/* Your page content goes here */}</main>
     </div>
   );
 }
