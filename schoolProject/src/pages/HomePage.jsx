@@ -51,6 +51,8 @@ const HomePage = () => {
   return (
     <div>
       <StyledHero>
+        {/* <img src="/joylandschool.png" alt="joyland picture" className="logo-home" /> */}
+
         <Container>
           <Typography variant="h2" gutterBottom>
             Welcome to Our School

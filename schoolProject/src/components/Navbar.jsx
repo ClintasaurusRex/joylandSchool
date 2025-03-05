@@ -14,7 +14,7 @@ function Navbar() {
       <nav className="navbar-container">
         <div className="navbar-brand">
           <Link to="/">
-            <h1>NewJoyland</h1>
+            <img src="../../public/joylandschool.png" alt="joyland picture" className="logo" />
           </Link>
         </div>
 
