@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Typography, Grid, Card, CardContent } from "@mui/material";
+import "../styles/Academic.scss";
 
 const Academic = () => {
   return (
@@ -10,59 +11,92 @@ const Academic = () => {
 
       <Grid container spacing={4}>
         <Grid item xs={12} md={6}>
-          <Card>
+          <Card className="academic-cards">
             <CardContent>
               <Typography variant="h5" component="h2" gutterBottom>
-                Undergraduate Programs
+                Subjects for Grades 7, 8, 9
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                Our undergraduate programs offer comprehensive education in various fields
-                including:
+                Our upper primary curriculum includes:
               </Typography>
+              <br />
               <ul>
-                <li>Computer Science</li>
-                <li>Business Administration</li>
-                <li>Engineering</li>
-                <li>Liberal Arts</li>
+                <li>English</li>
+                <li>Kiswahili</li>
+                <li>Mathematics</li>
+                <li>Agriculture</li>
+                <li>Social Studies</li>
+                <li>Integrated Science</li>
+                <li>Creative Arts and Sports</li>
+                <li>Pre-Technical Studies</li>
+                <li>Religious Studies</li>
               </ul>
             </CardContent>
           </Card>
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <Card>
+          <Card className="academic-cards">
             <CardContent>
               <Typography variant="h5" component="h2" gutterBottom>
-                Graduate Programs
+                Subjects for Grades 4, 5, 6
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                Advanced studies and research opportunities in:
+                Our middle primary curriculum includes:
               </Typography>
+              <br />
               <ul>
-                <li>Master's Programs</li>
-                <li>Doctoral Studies</li>
-                <li>Professional Certificates</li>
-                <li>Research Fellowships</li>
+                <li>English</li>
+                <li>Kiswahili</li>
+                <li>Mathematics</li>
+                <li>Science and Technology</li>
+                <li>Agriculture and Nutrition</li>
+                <li>Social Studies</li>
+                <li>Creative Arts</li>
+                <li>Religious Studies</li>
               </ul>
             </CardContent>
           </Card>
         </Grid>
 
-        <Grid item xs={12}>
-          <Card>
+        <Grid item xs={12} md={6}>
+          <Card className="academic-cards">
             <CardContent>
               <Typography variant="h5" component="h2" gutterBottom>
-                Academic Resources
+                Subjects for Grades 1, 2, 3
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                We provide comprehensive support for your academic journey:
+                Our lower primary curriculum includes:
               </Typography>
+              <br />
               <ul>
-                <li>Library Services</li>
-                <li>Research Centers</li>
-                <li>Academic Advising</li>
-                <li>Tutoring Services</li>
-                <li>Writing Center</li>
+                <li>English</li>
+                <li>Kiswahili</li>
+                <li>Mathematics</li>
+                <li>Environmental Activities</li>
+                <li>Creative Activities</li>
+                <li>Religious Studies</li>
+              </ul>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={12} md={6}>
+          <Card className="academic-cards">
+            <CardContent>
+              <Typography variant="h5" component="h2" gutterBottom>
+                Subjects for Pre-Primary (P.P) 1, 2
+              </Typography>
+              <Typography variant="body1" color="text.secondary">
+                Our pre-primary curriculum includes:
+              </Typography>
+              <br />
+              <ul>
+                <li>Language Activities</li>
+                <li>Mathematics Activities</li>
+                <li>Creative Activities</li>
+                <li>Environmental Activities</li>
+                <li>Religious Activities</li>
               </ul>
             </CardContent>
           </Card>
