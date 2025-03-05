@@ -111,7 +111,7 @@ const ContactUs = () => {
       <div className="contact-info">
         <h2>Other Ways to Contact Us</h2>
         <p>
-          <strong>POSTALL ADDRESS: </strong> P.O BOX 86713-80100 MOMBASA, KENYA
+          <strong>POSTALL ADDRESS: </strong> P.O BOX 86713-80100 MOMBASA, KENYA
         </p>
         <p>
           <strong>Call/WhatsApp:</strong> +254723024301
