@@ -14,6 +14,8 @@
 
 .hero-header {
   text-transform: uppercase;
+  font-family: "Libre Baskerville", sans-serif !important;
+  font-weight: 900;
 }
 
 /* @keyframes gradientAnimation {
@@ -36,3 +38,6 @@
   padding: 4rem 0;
   margin-bottom: 2rem;
 } */
+body {
+  font-family: "Libre Baskerville", serif;
+}
