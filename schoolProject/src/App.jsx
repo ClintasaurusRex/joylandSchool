@@ -9,6 +9,7 @@ import Academic from "../src/pages/Academic";
 import Sports from "../src/pages/Sports";
 import Contribute from "../src/pages/Contribute";
 import Contact from "../src/pages/ContactUs";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -27,12 +28,16 @@ function App() {
         </Routes>
 
         <footer>
-          <div className="container">
-            <p>© {new Date().getFullYear()} Joyland Prime Academy. All rights reserved.</p>
-          </div>
+          <Footer />
         </footer>
       </div>
     </Router>
   );
 }
 export default App;
+
+{
+  /* <div className="container">
+  <p>© {new Date().getFullYear()} Joyland Prime Academy. All rights reserved.</p>
+</div>; */
+}
