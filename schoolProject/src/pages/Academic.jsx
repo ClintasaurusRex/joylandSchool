@@ -17,7 +17,7 @@ const Academic = () => {
                 <strong>Subjects for Pre-Primary (P.P) 1, 2</strong>
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                Our pre-primary curriculum includes:
+                National pre-primary curriculum includes the following:
               </Typography>
               <br />
               <ul>
@@ -38,7 +38,7 @@ const Academic = () => {
                 <strong>Subjects for Grades 1, 2, 3</strong>
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                National lower primary curriculum includes:
+                National lower primary curriculum includes the following:
               </Typography>
               <br />
               <ul>
@@ -60,7 +60,7 @@ const Academic = () => {
                 <strong>Subjects for Grades 4, 5, 6</strong>
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                National upper primary curriculum includes:
+                National upper primary curriculum includes the following:
               </Typography>
               <br />
               <ul>
@@ -84,7 +84,7 @@ const Academic = () => {
                 <strong>Subjects for Grades 7, 8, 9</strong>
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                National Junior Secondary curriculum includes:
+                National junior secondary curriculum includes the following:
               </Typography>
               <br />
               <ul>
