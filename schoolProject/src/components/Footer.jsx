@@ -69,7 +69,7 @@ const Footer = () => {
           </Link>
           <Link
             className="footer-link"
-            href="login"
+            href="signup"
             color="inherit"
             sx={{ mx: 5, textDecoration: "none" }}
           >

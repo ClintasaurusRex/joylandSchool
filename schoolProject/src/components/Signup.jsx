@@ -4,6 +4,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 const Login = () => {
   const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
   });
@@ -21,7 +23,7 @@ const Login = () => {
     // Handle login logic here
     console.log("Login submitted:", formData);
 
-    setFormData({ email: "", password: "" });
+    setFormData({ email: "", password: "", firstName: "", lastName: "" });
   };
 
   return (
@@ -51,9 +53,33 @@ const Login = () => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign Up
           </Typography>
           <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="firstName"
+              label="firstName"
+              name="firstName"
+              autoComplete="given-name"
+              autoFocus
+              value={formData.firstName}
+              onChange={handleChange}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="lastName"
+              label="lastName"
+              name="lastName"
+              autoComplete="name"
+              autoFocus
+              value={formData.lastName}
+              onChange={handleChange}
+            />
             <TextField
               margin="normal"
               required
@@ -79,7 +105,7 @@ const Login = () => {
               onChange={handleChange}
             />
             <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-              Sign In
+              Sign Up
             </Button>
           </Box>
         </Paper>
