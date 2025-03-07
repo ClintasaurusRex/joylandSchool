@@ -1,4 +1,5 @@
 import { Box, Container, Typography, Link } from "@mui/material";
+import "../styles/Footer.scss";
 
 const Footer = () => {
   return (
@@ -15,28 +16,63 @@ const Footer = () => {
         <Box sx={{ display: "flex", justifyContent: "center", mb: 3 }}>
           {/* Quick Links */}
 
-          <Link href="/" color="inherit" sx={{ mx: 5 }}>
+          <Link
+            className="footer-link"
+            href="/"
+            color="inherit"
+            sx={{ mx: 5, textDecoration: "none" }}
+          >
             Home
           </Link>
-          <Link href="/academic" color="inherit" sx={{ mx: 5 }}>
+          <Link
+            className="footer-link"
+            href="/academic"
+            color="inherit"
+            sx={{ mx: 5, textDecoration: "none" }}
+          >
             Courses
           </Link>
-          <Link href="/admission" color="inherit" sx={{ mx: 5 }}>
+          <Link
+            className="footer-link"
+            href="/admission"
+            color="inherit"
+            sx={{ mx: 5, textDecoration: "none" }}
+          >
             Admission
           </Link>
-          <Link href="/contribute" color="inherit" sx={{ mx: 5 }}>
+          <Link
+            className="footer-link"
+            href="/contribute"
+            color="inherit"
+            sx={{ mx: 5, textDecoration: "none" }}
+          >
             Contribute
           </Link>
         </Box>
 
         <Box sx={{ display: "flex", justifyContent: "center", mb: 2 }}>
-          <Link href="/contact" color="inherit" sx={{ mx: 5 }}>
+          <Link
+            className="footer-link"
+            href="/contact"
+            color="inherit"
+            sx={{ mx: 5, textDecoration: "none" }}
+          >
             Contact Us
           </Link>
-          <Link href="/" color="inherit" sx={{ mx: 5 }}>
+          <Link
+            className="footer-link"
+            href="/"
+            color="inherit"
+            sx={{ mx: 5, textDecoration: "none" }}
+          >
             Login
           </Link>
-          <Link href="/" color="inherit" sx={{ mx: 5 }}>
+          <Link
+            className="footer-link"
+            href="/"
+            color="inherit"
+            sx={{ mx: 5, textDecoration: "none" }}
+          >
             Sign Up
           </Link>
         </Box>
