@@ -32,6 +32,7 @@ const Login = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          boxShadow: 24,
         }}
       >
         <Paper
@@ -42,6 +43,8 @@ const Login = () => {
             flexDirection: "column",
             alignItems: "center",
             width: "100%",
+
+            boxShadow: 24,
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
