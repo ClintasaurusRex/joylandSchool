@@ -1,5 +1,16 @@
 import React, { useState } from "react";
-import "../styles/ContactUs.scss";
+import {
+  Container,
+  Typography,
+  TextField,
+  Button,
+  Box,
+  Alert,
+  Divider,
+  Grid,
+  Paper,
+} from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -37,91 +48,123 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="contact-us-container">
-      <h1>Contact Us</h1>
-      <p>Have questions about Joyland School? We'd love to hear from you!</p>
+    <Container maxWidth="md" sx={{ py: 4 }}>
+      <Typography variant="h3" component="h1" gutterBottom>
+        Contact Us
+      </Typography>
 
-      {submitStatus && <div className="success-message">{submitStatus}</div>}
+      <Typography variant="body1" paragraph>
+        Have questions about Joyland School? We'd love to hear from you!
+      </Typography>
 
-      <form onSubmit={handleSubmit} className="contact-form">
-        <div className="form-group">
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
+      {submitStatus && (
+        <Alert severity="success" sx={{ mb: 3 }}>
+          {submitStatus}
+        </Alert>
+      )}
 
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
+      <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
+        <Box component="form" onSubmit={handleSubmit} noValidate>
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                required
+                id="name"
+                name="name"
+                label="Name"
+                value={formData.name}
+                onChange={handleChange}
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                required
+                id="email"
+                name="email"
+                label="Email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                id="phone"
+                name="phone"
+                label="Phone (optional)"
+                type="tel"
+                value={formData.phone}
+                onChange={handleChange}
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                required
+                id="subject"
+                name="subject"
+                label="Subject"
+                value={formData.subject}
+                onChange={handleChange}
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                required
+                id="message"
+                name="message"
+                label="Message"
+                multiline
+                rows={5}
+                value={formData.message}
+                onChange={handleChange}
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                size="large"
+                endIcon={<SendIcon />}
+                sx={{ mt: 2 }}
+              >
+                Send Message
+              </Button>
+            </Grid>
+          </Grid>
+        </Box>
+      </Paper>
 
-        <div className="form-group">
-          <label htmlFor="phone">Phone (optional):</label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-          />
-        </div>
+      <Divider sx={{ my: 3 }} />
 
-        <div className="form-group">
-          <label htmlFor="subject">Subject:</label>
-          <input
-            type="text"
-            id="subject"
-            name="subject"
-            value={formData.subject}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="message">Message:</label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-            rows="5"
-          ></textarea>
-        </div>
-
-        <button type="submit" className="submit-button">
-          Send Message
-        </button>
-      </form>
-
-      <div className="contact-info">
-        <h2>Other Ways to Contact Us</h2>
-        <p>
-          <strong>POSTALL ADDRESS: </strong> P.O BOX 86713-80100 MOMBASA, KENYA
-        </p>
-        <p>
-          <strong>Call/WhatsApp:</strong> +254723024301
-        </p>
-        <p>
-          <strong>Email:</strong> info@joylandschools.com
-        </p>
-      </div>
-    </div>
+      <Box sx={{ mt: 3 }}>
+        <Typography variant="h5" component="h2" gutterBottom>
+          Other Ways to Contact Us
+        </Typography>
+        <Typography variant="body1" paragraph sx={{ marginRight: "120" }}>
+          <strong>POSTAL ADDRESS:</strong> P.O BOX 86713-80100 MOMBASA, KENYA
+        </Typography>
+        <Typography variant="body1" paragraph>
+          <strong>Call/WhatsApp:</strong> +25-472-302-4301
+        </Typography>
+        <Typography variant="body1" paragraph>
+          <strong>Email:</strong>{" "}
+          <a href="mailto:info@joylandschools.com" target="_blank">
+            info@joylandschools.com
+          </a>
+        </Typography>
+      </Box>
+    </Container>
   );
 };
-
 export default ContactUs;
