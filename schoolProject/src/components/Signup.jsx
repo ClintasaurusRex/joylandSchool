@@ -20,14 +20,14 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle login logic here
+    // Handle login logic here *************************
     console.log("Login submitted:", formData);
 
     setFormData({ email: "", password: "", firstName: "", lastName: "" });
   };
 
   return (
-    <Container component="main" maxWidth="xs" sx={{ minHeight: "calc(100vh - 200px)" }}>
+    <Container component="main" maxWidth="sm" sx={{ minHeight: "calc(100vh - 200px)" }}>
       <Box
         sx={{
           marginTop: 8,
