@@ -31,7 +31,7 @@ const Footer = () => {
             color="inherit"
             sx={{ mx: 5, textDecoration: "none" }}
           >
-            Courses
+            Academic
           </Link>
           <Link
             className="footer-link"
