@@ -13,9 +13,10 @@ const Footer = () => {
       }}
     >
       <Container maxWidth="xl">
+        <Typography varient="h6" align="center" sx={{ mb: 2, fontWeight: "bold" }}>
+          Quick Links
+        </Typography>
         <Box sx={{ display: "flex", justifyContent: "center", mb: 3 }}>
-          {/* Quick Links */}
-
           <Link
             className="footer-link"
             href="/"
@@ -49,7 +50,6 @@ const Footer = () => {
             Contribute
           </Link>
         </Box>
-
         <Box sx={{ display: "flex", justifyContent: "center", mb: 2 }}>
           <Link
             className="footer-link"
@@ -76,7 +76,6 @@ const Footer = () => {
             Sign Up
           </Link>
         </Box>
-
         <Typography variant="body2" align="center">
           © {new Date().getFullYear()} Joyland Prime Academy.
           <img
