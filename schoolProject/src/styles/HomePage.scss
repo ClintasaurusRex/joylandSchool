@@ -8,15 +8,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: $background;
+  background-color: white;
 }
 .card-content-top {
   flex-grow: 1;
 }
 
-.styled-hero {
-  background-color: gold !important;
-}
+// .styled-hero {
+//   background-color: gold !important;
+// }
 
 .hero-header {
   text-transform: uppercase;
