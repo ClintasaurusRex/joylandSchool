@@ -5,7 +5,7 @@ const Footer = () => {
     <Box
       component="footer"
       sx={{
-        backgroundColor: "#2f27ce", // This will use the kenya-green from your variables
+        backgroundColor: "#2f27ce",
         color: "white",
         py: 3,
         mt: "auto",
