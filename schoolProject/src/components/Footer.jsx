@@ -5,7 +5,7 @@ const Footer = () => {
     <Box
       component="footer"
       sx={{
-        backgroundColor: "primary.main", // This will use the kenya-green from your variables
+        backgroundColor: "#2f27ce", // This will use the kenya-green from your variables
         color: "white",
         py: 3,
         mt: "auto",
@@ -13,23 +13,20 @@ const Footer = () => {
     >
       <Container maxWidth="xl">
         <Box sx={{ display: "flex", justifyContent: "center", mb: 3 }}>
-          <Box sx={{ display: "flex", gap: 4 }}>
-            {/* Quick Links */}
-            <Box>
-              <Link href="/" color="inherit" sx={{ mx: 5 }}>
-                Home
-              </Link>
-              <Link href="/academic" color="inherit" sx={{ mx: 5 }}>
-                Courses
-              </Link>
-              <Link href="/admission" color="inherit" sx={{ mx: 5 }}>
-                Admission
-              </Link>
-              <Link href="/contribute" color="inherit" sx={{ mx: 5 }}>
-                Contribute
-              </Link>
-            </Box>
-          </Box>
+          {/* Quick Links */}
+
+          <Link href="/" color="inherit" sx={{ mx: 5 }}>
+            Home
+          </Link>
+          <Link href="/academic" color="inherit" sx={{ mx: 5 }}>
+            Courses
+          </Link>
+          <Link href="/admission" color="inherit" sx={{ mx: 5 }}>
+            Admission
+          </Link>
+          <Link href="/contribute" color="inherit" sx={{ mx: 5 }}>
+            Contribute
+          </Link>
         </Box>
 
         <Box sx={{ display: "flex", justifyContent: "center", mb: 2 }}>
