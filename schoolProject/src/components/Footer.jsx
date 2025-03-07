@@ -43,10 +43,16 @@ const Footer = () => {
 
         <Typography variant="body2" align="center">
           © {new Date().getFullYear()} Joyland Prime Academy.
+          <img
+            src="/joylandschool.png"
+            alt="joyland picture"
+            height="25px"
+            width="25px"
+            style={{ marginLeft: "10px" }}
+          />
         </Typography>
       </Container>
     </Box>
   );
 };
-
 export default Footer;
