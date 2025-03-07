@@ -38,7 +38,7 @@ const Academic = () => {
                 <strong>Subjects for Grades 1, 2, 3</strong>
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                Our lower primary curriculum includes:
+                National lower primary curriculum includes:
               </Typography>
               <br />
               <ul>
@@ -60,7 +60,7 @@ const Academic = () => {
                 <strong>Subjects for Grades 4, 5, 6</strong>
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                Our middle primary curriculum includes:
+                National middle primary curriculum includes:
               </Typography>
               <br />
               <ul>
@@ -84,7 +84,7 @@ const Academic = () => {
                 <strong>Subjects for Grades 7, 8, 9</strong>
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                Our upper primary curriculum includes:
+                National upper primary curriculum includes:
               </Typography>
               <br />
               <ul>
