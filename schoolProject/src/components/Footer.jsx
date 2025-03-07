@@ -1,49 +1,50 @@
-import { Box, Container, Typography, Link, Grid2 } from "@mui/material";
+import { Box, Container, Typography, Link, Grid } from "@mui/material";
 
 const Footer = () => {
   return (
     <Box
       component="footer"
       sx={{
-        backgroundColor: "#2f27ce",
+        backgroundColor: "primary.main", // This will use the kenya-green from your variables
         color: "white",
         py: 3,
         mt: "auto",
       }}
     >
-      <Container maxWidth="xl" sx={{ width: "100%" }}>
-        {/* Left section */}
-        <section className="links1">
-          <Grid2 xs={12} sm={4} sx={{ textAlign: "center", flexDirection: "row" }}>
-            <Typography variant="h6" gutterBottom>
-              Quick Links
-            </Typography>
-            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-              <Link href="/" color="inherit" sx={{ mb: 1 }}>
+      <Container maxWidth="lg">
+        <Box sx={{ display: "flex", justifyContent: "center", mb: 3 }}>
+          <Box sx={{ display: "flex", gap: 4 }}>
+            {/* Quick Links */}
+            <Box>
+              <Link href="/" color="inherit" sx={{ mx: 1 }}>
                 Home
               </Link>
-              <Link href="/academic" color="inherit" sx={{ mb: 1 }}>
+              <Link href="/academic" color="inherit" sx={{ mx: 1 }}>
                 Courses
               </Link>
-              <Link href="/admission" color="inherit" sx={{ mb: 1 }}>
+              <Link href="/admission" color="inherit" sx={{ mx: 1 }}>
                 Admission
               </Link>
-              <Link href="/contribute" color="inherit" sx={{ mb: 1 }}>
+              <Link href="/contribute" color="inherit" sx={{ mx: 1 }}>
                 Contribute
               </Link>
-              <Link href="/contact" color="inherit" sx={{ mb: 1 }}>
-                Contact Us
-              </Link>
-              <Link href="/contact" color="inherit" sx={{ mb: 1 }}>
-                Login
-              </Link>
             </Box>
-          </Grid2>
-        </section>
+          </Box>
+        </Box>
 
-        {/* Right section */}
+        <Box sx={{ display: "flex", justifyContent: "center", mb: 2 }}>
+          <Link href="/contact" color="inherit" sx={{ mx: 1 }}>
+            Contact Us
+          </Link>
+          <Link href="/login" color="inherit" sx={{ mx: 1 }}>
+            Login
+          </Link>
+          <Link href="/contribute" color="inherit" sx={{ mx: 1 }}>
+            Sign Up
+          </Link>
+        </Box>
 
-        <Typography variant="body2" align="center" sx={{ mt: 3 }}>
+        <Typography variant="body2" align="center">
           © {new Date().getFullYear()} Joyland Prime Academy.
         </Typography>
       </Container>
