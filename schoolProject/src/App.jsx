@@ -26,11 +26,8 @@ function App() {
           <Route path="contribute" element={<Contribute />} />
           <Route path="contact" element={<Contact />} />
         </Routes>
-
-        <footer>
-          <Footer />
-        </footer>
       </div>
+      <Footer />
     </Router>
   );
 }
