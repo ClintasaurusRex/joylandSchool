@@ -9,7 +9,7 @@ const Footer = () => {
         backgroundColor: "#2f27ce",
         color: "white",
         py: 3,
-        mt: "auto",
+        mt: "0",
       }}
     >
       <Container maxWidth="xl">
@@ -61,7 +61,7 @@ const Footer = () => {
           </Link>
           <Link
             className="footer-link"
-            href="/"
+            href="login"
             color="inherit"
             sx={{ mx: 5, textDecoration: "none" }}
           >
@@ -69,7 +69,7 @@ const Footer = () => {
           </Link>
           <Link
             className="footer-link"
-            href="/"
+            href="login"
             color="inherit"
             sx={{ mx: 5, textDecoration: "none" }}
           >

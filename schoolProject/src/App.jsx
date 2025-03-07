@@ -10,6 +10,7 @@ import Sports from "../src/pages/Sports";
 import Contribute from "../src/pages/Contribute";
 import Contact from "../src/pages/ContactUs";
 import Footer from "./components/Footer";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="sports" element={<Sports />} />
           <Route path="contribute" element={<Contribute />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="login" element={<Login />} />
         </Routes>
       </div>
       <Footer />
