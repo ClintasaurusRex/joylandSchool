@@ -60,7 +60,7 @@ const Academic = () => {
                 <strong>Subjects for Grades 4, 5, 6</strong>
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                National middle primary curriculum includes:
+                National upper primary curriculum includes:
               </Typography>
               <br />
               <ul>
