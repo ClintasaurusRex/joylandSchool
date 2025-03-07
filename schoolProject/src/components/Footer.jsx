@@ -5,7 +5,7 @@ const Footer = () => {
     <Box
       component="footer"
       sx={{
-        backgroundColor: "primary.main",
+        backgroundColor: "#2f27ce",
         color: "white",
         py: 3,
         mt: "auto",
@@ -31,10 +31,13 @@ const Footer = () => {
               <Link href="/contribute" color="inherit" sx={{ mb: 1 }}>
                 Contribute
               </Link>
+              <Link href="/contact" color="inherit" sx={{ mb: 1 }}>
+                Contact Us
+              </Link>
+              <Link href="/contact" color="inherit" sx={{ mb: 1 }}>
+                Login
+              </Link>
             </Box>
-            <Link href="/contact" color="inherit">
-              Contact Us
-            </Link>
           </Grid2>
         </section>
 
