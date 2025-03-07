@@ -36,10 +36,10 @@ const Footer = () => {
           <Link href="/contact" color="inherit" sx={{ mx: 5 }}>
             Contact Us
           </Link>
-          <Link href="/login" color="inherit" sx={{ mx: 5 }}>
+          <Link href="/" color="inherit" sx={{ mx: 5 }}>
             Login
           </Link>
-          <Link href="/contribute" color="inherit" sx={{ mx: 5 }}>
+          <Link href="/" color="inherit" sx={{ mx: 5 }}>
             Sign Up
           </Link>
         </Box>
