@@ -11,6 +11,7 @@ import Contribute from "../src/pages/Contribute";
 import Contact from "../src/pages/ContactUs";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="contribute" element={<Contribute />} />
           <Route path="contact" element={<Contact />} />
           <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
         </Routes>
       </div>
       <Footer />
