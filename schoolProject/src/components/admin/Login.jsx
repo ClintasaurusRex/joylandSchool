@@ -66,6 +66,7 @@ const Login = () => {
       <Box
         sx={{
           marginTop: 8,
+          marginBottom: 8,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -129,7 +130,7 @@ const Login = () => {
               {loading ? <CircularProgress size={24} /> : 'Sign In'}
             </Button>
           </Box>
-          <Button
+          {/* <Button
             variant='text'
             color='secondary'
             disabled={loading}
@@ -158,7 +159,7 @@ const Login = () => {
             sx={{ mt: 1 }}
           >
             {loading ? <CircularProgress size={24} /> : 'Login as Test Admin'}
-          </Button>
+          </Button> */}
           {loginSuccess && (
             <Box sx={{ mt: 2, textAlign: 'center' }}>
               <Typography variant='body1' color='success.main' gutterBottom>
