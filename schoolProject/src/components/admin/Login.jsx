@@ -145,7 +145,7 @@ const Login = () => {
                 await signInWithEmailAndPassword(
                   auth,
                   'test.codemajic@gmail.com',
-                  'password'
+                  ''
                 );
                 console.log('Test admin login successful');
                 setLoginSuccess(true);

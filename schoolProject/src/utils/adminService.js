@@ -120,7 +120,7 @@ export const updateUserRole = async (uid, role) => {
         uid,
         role,
         createdAt: new Date(),
-        email: 'test.codemajic@gmail.com', // Hardcoded for test user
+        email: import.meta.env.VITE_TEST_ADMIN_EMAIL, // Use environment variable
       });
     }
 
@@ -138,8 +138,8 @@ export const fetchUsers = async () => {
 // Hardcoded function to set test.codemajic@gmail.com as admin
 export const setTestUserAsAdmin = async () => {
   try {
-    // Hardcoded UID for test.codemajic@gmail.com
-    const testUserUid = 'kIPSkFsb6LWlqBtph0E6pSIiBLz2';
+    // Use environment variable for the test user UID
+    const testUserUid = import.meta.env.VITE_TEST_ADMIN_UID;
 
     await updateUserRole(testUserUid, 'admin');
     console.log('Test user successfully set as admin');
