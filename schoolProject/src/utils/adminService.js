@@ -135,17 +135,17 @@ export const fetchUsers = async () => {
   return await fetchData('users');
 };
 
-// Hardcoded function to set test.codemajic@gmail.com as admin
-export const setTestUserAsAdmin = async () => {
-  try {
-    // Hardcoded UID for test.codemajic@gmail.com
-    const testUserUid = 'kIPSkFsb6LWlqBtph0E6pSIiBLz2';
+// // Hardcoded function to set test.codemajic@gmail.com as admin
+// export const setTestUserAsAdmin = async () => {
+//   try {
+//     // Hardcoded UID for test.codemajic@gmail.com
+//     const testUserUid = 'kIPSkFsb6LWlqBtph0E6pSIiBLz2';
 
-    await updateUserRole(testUserUid, 'admin');
-    console.log('Test user successfully set as admin');
-    return { success: true };
-  } catch (error) {
-    console.error('Error setting test user as admin:', error);
-    return { success: false, error };
-  }
-};
+//     await updateUserRole(testUserUid, 'admin');
+//     console.log('Test user successfully set as admin');
+//     return { success: true };
+//   } catch (error) {
+//     console.error('Error setting test user as admin:', error);
+//     return { success: false, error };
+//   }
+// };
