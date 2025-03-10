@@ -21,6 +21,11 @@ function AdminSignUp() {
   const handleSignUp = async () => {
     try {
       setError('');
+
+      if (!email || !password) {
+        setError('Please fill out all of the fields');
+      }
+
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -34,7 +39,7 @@ function AdminSignUp() {
       // TODO: Redirect to admin dashboard or login page
     } catch (error) {
       console.error('Error signing up:', error);
-      setError(error.message);
+      // setError(error.message);
     }
   };
 
