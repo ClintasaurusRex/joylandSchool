@@ -8,12 +8,14 @@ import {
   Paper,
   Avatar,
   Alert,
+  CircularProgress,
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../utils/config';
 import { useNavigate } from 'react-router-dom';
 import { setTestUserAsAdmin } from '../../utils/adminService';
+import { useAuth } from '../../context/AuthContext';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -21,7 +23,10 @@ const Login = () => {
     password: '',
   });
   const [error, setError] = useState('');
+  const [loginSuccess, setLoginSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { currentUser, isAdmin } = useAuth();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,16 +39,21 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setLoading(true);
     try {
+      // Sign in with email and password
       await signInWithEmailAndPassword(auth, formData.email, formData.password);
       console.log('Login successful');
-      // Add a small delay to ensure Firebase auth state has updated
+
+      // Add a delay to ensure Firebase auth state has updated
       setTimeout(() => {
-        navigate('/admin/dashboard', { replace: true });
-      }, 500);
+        setLoginSuccess(true);
+        setLoading(false);
+      }, 3200);
     } catch (error) {
       setError(error.message);
       console.error('Login error:', error);
+      setLoading(false);
     }
   };
 
@@ -113,16 +123,19 @@ const Login = () => {
               type='submit'
               fullWidth
               variant='contained'
+              disabled={loading}
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              {loading ? <CircularProgress size={24} /> : 'Sign In'}
             </Button>
           </Box>
           <Button
             variant='text'
             color='secondary'
+            disabled={loading}
             onClick={async () => {
               try {
+                setLoading(true);
                 // First set the test user as admin
                 const adminResult = await setTestUserAsAdmin();
                 console.log('Set test user as admin result:', adminResult);
@@ -134,21 +147,33 @@ const Login = () => {
                   'password'
                 );
                 console.log('Test admin login successful');
-
-                // Add a longer delay to ensure Firebase auth state has fully updated
-                setTimeout(() => {
-                  console.log('Navigating to dashboard after timeout');
-                  navigate('/admin/dashboard', { replace: true });
-                }, 2000); // Increase timeout to 2 seconds
+                setLoginSuccess(true);
+                setLoading(false);
               } catch (error) {
                 console.error('Login error:', error);
                 setError(error.message);
+                setLoading(false);
               }
             }}
             sx={{ mt: 1 }}
           >
-            Login as Test Admin
+            {loading ? <CircularProgress size={24} /> : 'Login as Test Admin'}
           </Button>
+          {loginSuccess && (
+            <Box sx={{ mt: 2, textAlign: 'center' }}>
+              <Typography variant='body1' color='success.main' gutterBottom>
+                Login successful! You can now go to the admin dashboard.
+              </Typography>
+              <Button
+                variant='contained'
+                color='primary'
+                onClick={() => navigate('/admin/dashboard', { replace: true })}
+                sx={{ mt: 1 }}
+              >
+                Go to Admin Dashboard
+              </Button>
+            </Box>
+          )}
         </Paper>
       </Box>
     </Container>
