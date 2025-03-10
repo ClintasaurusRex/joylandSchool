@@ -19,6 +19,7 @@ function AdminSignUp() {
   const [success, setSuccess] = useState('');
 
   const handleSignUp = async () => {
+    e.preventDefault();
     try {
       setError('');
 
@@ -82,7 +83,12 @@ function AdminSignUp() {
             </Alert>
           )}
 
-          <Box sx={{ mt: 1, width: '100%' }}>
+          <Box
+            component='form'
+            onSubmit={handleSignUp}
+            sx={{ mt: 1, width: '100%' }}
+            noValidate
+          >
             <TextField
               margin='normal'
               required

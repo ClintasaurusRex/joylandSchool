@@ -11,7 +11,7 @@ import Contribute from '../src/pages/Contribute';
 import Contact from '../src/pages/ContactUs';
 import Footer from './components/Footer';
 import Login from './components/admin/Login';
-import Signup from './components/Signup';
+// import Signup from './components/Signup';
 import AdminSignUp from './components/admin/AdminSignUp';
 import { AuthProvider } from './context/AuthContext';
 
@@ -31,7 +31,7 @@ function App() {
             <Route path='contribute' element={<Contribute />} />
             <Route path='contact' element={<Contact />} />
             <Route path='admin/login' element={<Login />} />
-            <Route path='signup' element={<Signup />} />
+            {/* <Route path='signup' element={<Signup />} /> */}
             <Route path='admin/signup' element={<AdminSignUp />} />
           </Routes>
         </div>
