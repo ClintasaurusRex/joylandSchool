@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
           if (userDoc.exists()) {
             setUserRole(userDoc.data().role);
           } else {
-            setUserRole("user"); // Default role
+            setUserRole("user");
           }
         } catch (error) {
           console.error("Error fetching user role:", error);

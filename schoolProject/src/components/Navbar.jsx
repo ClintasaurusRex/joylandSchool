@@ -1,13 +1,13 @@
-import '../styles/Navbar.scss';
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import { signOut } from 'firebase/auth';
-import { auth } from '../utils/config';
+import "../styles/Navbar.scss";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { signOut } from "firebase/auth";
+import { auth } from "../utils/config";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { currentUser } = useAuth();
+  const { currentUser, isAdmin } = useAuth(); // Add isAdmin here
   const navigate = useNavigate();
 
   const toggleMenu = () => {
@@ -17,81 +17,83 @@ function Navbar() {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      navigate('/');
+      navigate("/");
     } catch (error) {
-      console.error('Logout error:', error);
+      console.error("Logout error:", error);
     }
   };
 
   return (
-    <div className='nav-container'>
-      <nav className='navbar-container'>
-        <div className='navbar-brand'>
-          <Link to='/'>
-            <img
-              src='/joylandschool.png'
-              alt='joyland picture'
-              className='logo'
-            />
+    <div className="nav-container">
+      <nav className="navbar-container">
+        <div className="navbar-brand">
+          <Link to="/">
+            <img src="/joylandschool.png" alt="joyland picture" className="logo" />
           </Link>
         </div>
 
-        <div className='nav-toggle' onClick={toggleMenu}>
-          <div className={`toggle-line ${isMenuOpen ? 'open' : ''}`}></div>
-          <div className={`toggle-line ${isMenuOpen ? 'open' : ''}`}></div>
-          <div className={`toggle-line ${isMenuOpen ? 'open' : ''}`}></div>
+        <div className="nav-toggle" onClick={toggleMenu}>
+          <div className={`toggle-line ${isMenuOpen ? "open" : ""}`}></div>
+          <div className={`toggle-line ${isMenuOpen ? "open" : ""}`}></div>
+          <div className={`toggle-line ${isMenuOpen ? "open" : ""}`}></div>
         </div>
 
-        <div className={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
+        <div className={`navbar-links ${isMenuOpen ? "open" : ""}`}>
           <li>
-            <Link className='nav-link' to='/'>
+            <Link className="nav-link" to="/">
               Home
             </Link>
           </li>
           <li>
-            <Link className='nav-link' to='/about'>
+            <Link className="nav-link" to="/about">
               About
             </Link>
           </li>
           <li>
-            <Link className='nav-link' to='/admission'>
+            <Link className="nav-link" to="/admission">
               Admission
             </Link>
           </li>
           <li>
-            <Link className='nav-link' to='/academic'>
+            <Link className="nav-link" to="/academic">
               Academic
             </Link>
           </li>
           <li>
-            <Link className='nav-link' to='/sports'>
+            <Link className="nav-link" to="/sports">
               Sports
             </Link>
           </li>
           <li>
-            <Link className='nav-link' to='/contribute'>
+            <Link className="nav-link" to="/contribute">
               Contribute
             </Link>
           </li>
           <li>
-            <Link className='nav-link' to='/contact'>
+            <Link className="nav-link" to="/contact">
               Contact Us
             </Link>
           </li>
+
+          {/* Add Admin Dashboard Link */}
+          {isAdmin && (
+            <li>
+              <Link className="nav-link" to="/admin/dashboard">
+                Admin Dashboard
+              </Link>
+            </li>
+          )}
+
           {currentUser ? (
             <li>
-              <a
-                className='nav-link'
-                onClick={handleLogout}
-                style={{ cursor: 'pointer' }}
-              >
+              <a className="nav-link" onClick={handleLogout} style={{ cursor: "pointer" }}>
                 Logout
               </a>
             </li>
           ) : (
             <>
               <li>
-                <Link className='nav-link' to='admin/login'>
+                <Link className="nav-link" to="admin/login">
                   Login
                 </Link>
               </li>
