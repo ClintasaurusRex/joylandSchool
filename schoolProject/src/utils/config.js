@@ -8,12 +8,12 @@ import { getStorage } from 'firebase/storage';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyD8TirGcX2_0X6Ox4dM7O_V_2v2G48MBm4',
-  authDomain: 'joyland-prime-academy.firebaseapp.com',
-  projectId: 'joyland-prime-academy',
-  storageBucket: 'joyland-prime-academy.firebasestorage.app',
-  messagingSenderId: '491968680811',
-  appId: '1:491968680811:web:f5cc03b4def019ebb4f22e',
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 // Init Firebase :)
