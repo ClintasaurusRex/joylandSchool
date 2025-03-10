@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Typography,
@@ -8,10 +8,12 @@ import {
   Button,
   Box,
   Divider,
+  CircularProgress,
 } from '@mui/material';
 import { styled } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import '../styles/HomePage.scss';
+import { fetchNews } from '../utils/adminService';
 
 const StyledHero = styled('div')({
   background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
@@ -22,33 +24,53 @@ const StyledHero = styled('div')({
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const [newsItems, setNewsItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // Mock news data
-  const newsItems = [
-    {
-      id: 1,
-      title: 'Annual Science Fair Winners Announced',
-      date: 'June 15, 2023',
-      content:
-        "Congratulations to all participants in this year's Science Fair. Special recognition goes to Emily Chen for her innovative renewable energy project.",
-    },
-    {
-      id: 2,
-      title: 'New Sports Facility Opening Next Month',
-      date: 'June 10, 2023',
-      content:
-        "We're excited to announce the grand opening of our state-of-the-art sports complex, featuring an Olympic-sized swimming pool and modern gymnasium.",
-    },
-    {
-      id: 3,
-      title: 'Summer Reading Program Kicks Off',
-      date: 'June 5, 2023',
-      content:
-        'Join us for our annual summer reading challenge! Students who complete the program will be eligible for exciting prizes and recognition at our fall assembly.',
-    },
-  ];
+  // Fetch news data from Firebase
+  useEffect(() => {
+    const getNews = async () => {
+      try {
+        const data = await fetchNews();
+        // Sort news by date (newest first)
+        const sortedNews = data.sort(
+          (a, b) => new Date(b.date) - new Date(a.date)
+        );
+        setNewsItems(sortedNews.slice(0, 3)); // Get only the 3 most recent news items
+      } catch (error) {
+        console.error('Error fetching news:', error);
+        // Fallback to mock data if fetch fails
+        // setNewsItems([
+        //   {
+        //     id: 1,
+        //     title: 'Annual Science Fair Winners Announced',
+        //     date: 'June 15, 2023',
+        //     content:
+        //       "Congratulations to all participants in this year's Science Fair. Special recognition goes to Emily Chen for her innovative renewable energy project.",
+        //   },
+        //   {
+        //     id: 2,
+        //     title: 'New Sports Facility Opening Next Month',
+        //     date: 'June 10, 2023',
+        //     content:
+        //       "We're excited to announce the grand opening of our state-of-the-art sports complex, featuring an Olympic-sized swimming pool and modern gymnasium.",
+        //   },
+        //   {
+        //     id: 3,
+        //     title: 'Summer Reading Program Kicks Off',
+        //     date: 'June 5, 2023',
+        //     content:
+        //       'Join us for our annual summer reading challenge! Students who complete the program will be eligible for exciting prizes and recognition at our fall assembly.',
+        //   },
+        // ]);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  // sx={{ background: "black" }}
+    getNews();
+  }, []);
+
   return (
     <div>
       <StyledHero>
@@ -170,34 +192,51 @@ const HomePage = () => {
             </Grid>
 
             {/* News Items */}
-            {newsItems.map((news) => (
-              <Grid item xs={12} md={4} key={news.id}>
-                <Card elevation={2}>
-                  <CardContent>
-                    <Typography variant='h6' gutterBottom>
-                      {news.title}
-                    </Typography>
-                    <Typography
-                      variant='caption'
-                      color='text.secondary'
-                      display='block'
-                      gutterBottom
-                    >
-                      {news.date}
-                    </Typography>
-                    <Divider sx={{ my: 1 }} />
-                    <Typography variant='body2' paragraph>
-                      {news.content}
-                    </Typography>
-                    <Box sx={{ textAlign: 'right' }}>
-                      <Button size='small' color='primary'>
-                        Read More
-                      </Button>
-                    </Box>
-                  </CardContent>
-                </Card>
+            {loading ? (
+              <Grid item xs={12} sx={{ textAlign: 'center', py: 4 }}>
+                <CircularProgress />
+                <Typography variant='body1' sx={{ mt: 2 }}>
+                  Loading news...
+                </Typography>
               </Grid>
-            ))}
+            ) : newsItems.length === 0 ? (
+              <Grid item xs={12}>
+                <Typography variant='body1'>
+                  No news items available at this time.
+                </Typography>
+              </Grid>
+            ) : (
+              newsItems.map((news) => (
+                <Grid item xs={12} md={4} key={news.id}>
+                  <Card elevation={2}>
+                    <CardContent>
+                      <Typography variant='h6' gutterBottom>
+                        {news.title}
+                      </Typography>
+                      <Typography
+                        variant='caption'
+                        color='text.secondary'
+                        display='block'
+                        gutterBottom
+                      >
+                        {news.date}
+                      </Typography>
+                      <Divider sx={{ my: 1 }} />
+                      <Typography variant='body2' paragraph>
+                        {news.content.length > 150
+                          ? `${news.content.substring(0, 150)}...`
+                          : news.content}
+                      </Typography>
+                      <Box sx={{ textAlign: 'right' }}>
+                        <Button size='small' color='primary'>
+                          Read More
+                        </Button>
+                      </Box>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))
+            )}
           </Grid>
         </Container>
       </div>

@@ -5,26 +5,26 @@ import { doc, setDoc, updateDoc, getDoc } from 'firebase/firestore';
 
 // News Management
 export const addNewsItem = async (newsData) => {
-  console.log('Adding news item:', newsData);
-  // Placeholder
-  return { id: 'placeholder-id' };
+  return await addData('news', {
+    ...newsData,
+    createdAt: serverTimestamp(),
+    updatedAt: serverTimestamp(),
+  });
 };
 
 export const updateNewsItem = async (id, newsData) => {
-  console.log('Updating news item:', id, newsData);
-  // Placeholder
-  return true;
+  return await updateData('news', id, {
+    ...newsData,
+    updatedAt: serverTimestamp(),
+  });
 };
 
 export const deleteNewsItem = async (id) => {
-  console.log('Deleting news item:', id);
-  // Placeholder
-  return true;
+  return await deleteData('news', id);
 };
 
 export const fetchNews = async () => {
-  // Placeholder - return empty array for now
-  return [];
+  return await fetchData('news');
 };
 
 // Academic Content Management
