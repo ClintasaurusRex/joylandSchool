@@ -13,28 +13,31 @@ import Footer from './components/Footer';
 import Login from './components/admin/Login';
 import Signup from './components/Signup';
 import AdminSignUp from './components/admin/AdminSignUp';
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
   return (
-    <Router>
-      <Navbar />
+    <AuthProvider>
+      <Router>
+        <Navbar />
 
-      <div className='content-container'>
-        <Routes>
-          <Route index element={<HomePage />} />
-          <Route path='about' element={<AboutPage />} />
-          <Route path='admission' element={<Admission />} />
-          <Route path='academic' element={<Academic />} />
-          <Route path='sports' element={<Sports />} />
-          <Route path='contribute' element={<Contribute />} />
-          <Route path='contact' element={<Contact />} />
-          <Route path='admin/login' element={<Login />} />
-          <Route path='signup' element={<Signup />} />
-          <Route path='admin/signup' element={<AdminSignUp />} />
-        </Routes>
-      </div>
-      <Footer />
-    </Router>
+        <div className='content-container'>
+          <Routes>
+            <Route index element={<HomePage />} />
+            <Route path='about' element={<AboutPage />} />
+            <Route path='admission' element={<Admission />} />
+            <Route path='academic' element={<Academic />} />
+            <Route path='sports' element={<Sports />} />
+            <Route path='contribute' element={<Contribute />} />
+            <Route path='contact' element={<Contact />} />
+            <Route path='admin/login' element={<Login />} />
+            <Route path='signup' element={<Signup />} />
+            <Route path='admin/signup' element={<AdminSignUp />} />
+          </Routes>
+        </div>
+        <Footer />
+      </Router>
+    </AuthProvider>
   );
 }
 export default App;

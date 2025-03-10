@@ -91,15 +91,15 @@ function Navbar() {
           ) : (
             <>
               <li>
-                <Link className='nav-link' to='/login'>
+                <Link className='nav-link' to='admin/login'>
                   Login
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link className='nav-link' to='/signup'>
                   Sign Up
                 </Link>
-              </li>
+              </li> */}
             </>
           )}
         </div>

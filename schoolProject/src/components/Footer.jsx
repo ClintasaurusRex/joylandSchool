@@ -1,4 +1,6 @@
 import { Box, Container, Typography, Link } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
+
 import '../styles/Footer.scss';
 
 const Footer = () => {
@@ -23,15 +25,17 @@ const Footer = () => {
         <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
           <Link
             className='footer-link'
-            href='/'
+            component={RouterLink}
+            to='/'
             color='inherit'
-            sx={{ mx: 5, textDecoration: 'none' }}
+            style={{ margin: '0 20px', textDecoration: 'none' }}
           >
             Home
           </Link>
           <Link
             className='footer-link'
-            href='/academic'
+            component={RouterLink}
+            to='/academic'
             color='inherit'
             sx={{ mx: 5, textDecoration: 'none' }}
           >
@@ -39,7 +43,8 @@ const Footer = () => {
           </Link>
           <Link
             className='footer-link'
-            href='/admission'
+            component={RouterLink}
+            to='/admission'
             color='inherit'
             sx={{ mx: 5, textDecoration: 'none' }}
           >
@@ -47,7 +52,8 @@ const Footer = () => {
           </Link>
           <Link
             className='footer-link'
-            href='/contribute'
+            component={RouterLink}
+            to='/contribute'
             color='inherit'
             sx={{ mx: 5, textDecoration: 'none' }}
           >
@@ -57,7 +63,8 @@ const Footer = () => {
         <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
           <Link
             className='footer-link'
-            href='/contact'
+            component={RouterLink}
+            to='/contact'
             color='inherit'
             sx={{ mx: 5, textDecoration: 'none' }}
           >
@@ -65,7 +72,8 @@ const Footer = () => {
           </Link>
           <Link
             className='footer-link'
-            href='login'
+            component={RouterLink}
+            to='admin/login'
             color='inherit'
             sx={{ mx: 5, textDecoration: 'none' }}
           >
@@ -73,7 +81,8 @@ const Footer = () => {
           </Link>
           <Link
             className='footer-link'
-            href='admin/signup'
+            component={RouterLink}
+            to='admin/signup'
             color='inherit'
             sx={{ mx: 5, textDecoration: 'none' }}
           >
