@@ -39,30 +39,6 @@ const HomePage = () => {
         setNewsItems(sortedNews.slice(0, 3)); // Get only the 3 most recent news items
       } catch (error) {
         console.error('Error fetching news:', error);
-        // Fallback to mock data if fetch fails
-        // setNewsItems([
-        //   {
-        //     id: 1,
-        //     title: 'Annual Science Fair Winners Announced',
-        //     date: 'June 15, 2023',
-        //     content:
-        //       "Congratulations to all participants in this year's Science Fair. Special recognition goes to Emily Chen for her innovative renewable energy project.",
-        //   },
-        //   {
-        //     id: 2,
-        //     title: 'New Sports Facility Opening Next Month',
-        //     date: 'June 10, 2023',
-        //     content:
-        //       "We're excited to announce the grand opening of our state-of-the-art sports complex, featuring an Olympic-sized swimming pool and modern gymnasium.",
-        //   },
-        //   {
-        //     id: 3,
-        //     title: 'Summer Reading Program Kicks Off',
-        //     date: 'June 5, 2023',
-        //     content:
-        //       'Join us for our annual summer reading challenge! Students who complete the program will be eligible for exciting prizes and recognition at our fall assembly.',
-        //   },
-        // ]);
       } finally {
         setLoading(false);
       }
@@ -81,7 +57,6 @@ const HomePage = () => {
             joyland prime academy
           </Typography>
           <Typography variant='h5' className='hero-header'>
-            {' '}
             education is treasure
           </Typography>
         </Container>
