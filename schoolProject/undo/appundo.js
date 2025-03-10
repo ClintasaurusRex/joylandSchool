@@ -22,39 +22,24 @@ import { useAuth } from './context/AuthContext';
 
 // Admin components
 import Dashboard from '../src/components/admin/Dashboard';
-// import NewsManager from '../src/components/admin/NewsManager';
-// import AcademicsManager from './components/admin/AcademicsManager';
-// import SportsManager from './components/admin/SportsManager';
-// import FormSubmissions from './components/admin/FormSubmissions';
-// import UserManager from './components/admin/UserManager';
+import NewsManager from '../src/components/admin/NewsManager';
+import AcademicsManager from './components/admin/AcademicsManager';
+// import SportsManager from "./components/admin/SportsManager";
+// import FormSubmissions from "./components/admin/FormSubmissions";
+// import UserManager from "./components/admin/UserManager";
 
 // Admin route protection
 const AdminRoute = ({ children }) => {
-  const { currentUser, userRole, loading, isAdmin } = useAuth();
-
-  console.log('AdminRoute check:', {
-    currentUser: currentUser?.email,
-    userRole,
-    isAdmin,
-    loading,
-  });
+  const { currentUser, userRole, loading } = useAuth();
 
   if (loading) {
-    console.log('AdminRoute: Loading...');
     return <div>Loading...</div>;
   }
 
-  if (!currentUser) {
-    console.log('AdminRoute: No user, redirecting to login');
+  if (!currentUser || userRole !== 'admin') {
     return <Navigate to='/admin/login' />;
   }
 
-  if (userRole !== 'admin') {
-    console.log('AdminRoute: Not admin, redirecting to home');
-    return <Navigate to='/' />;
-  }
-
-  console.log('AdminRoute: Rendering children');
   return children;
 };
 
@@ -74,9 +59,11 @@ function App() {
             <Route path='sports' element={<Sports />} />
             <Route path='contribute' element={<Contribute />} />
             <Route path='contact' element={<Contact />} />
+
             {/* Auth Routes */}
             <Route path='admin/login' element={<Login />} />
             <Route path='admin/signup' element={<AdminSignUp />} />
+
             {/* Admin Routes - Protected */}
             <Route
               path='admin/dashboard'
@@ -86,7 +73,7 @@ function App() {
                 </AdminRoute>
               }
             />
-            {/* <Route
+            <Route
               path='admin/news'
               element={
                 <AdminRoute>
@@ -102,8 +89,8 @@ function App() {
                 </AdminRoute>
               }
             />
-            <Route
-              path='admin/sports'
+            {/* <Route
+              path="admin/sports"
               element={
                 <AdminRoute>
                   <SportsManager />
@@ -111,7 +98,7 @@ function App() {
               }
             />
             <Route
-              path='admin/submissions'
+              path="admin/submissions"
               element={
                 <AdminRoute>
                   <FormSubmissions />
@@ -119,7 +106,7 @@ function App() {
               }
             />
             <Route
-              path='admin/users'
+              path="admin/users"
               element={
                 <AdminRoute>
                   <UserManager />

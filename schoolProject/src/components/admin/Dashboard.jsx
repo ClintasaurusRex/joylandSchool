@@ -1,125 +1,58 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import {
-  Container,
-  Grid,
-  Paper,
-  Typography,
-  Card,
-  CardContent,
-  CardActions,
-  Button,
-} from "@mui/material";
-import { useAuth } from "../../context/AuthContext";
+import React from 'react';
+import { Box, Typography, Container, Paper } from '@mui/material';
+import { useAuth } from '../../context/AuthContext';
+import { Navigate } from 'react-router-dom';
 
 const Dashboard = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, isAdmin } = useAuth();
+
+  console.log('Dashboard component rendering', {
+    currentUser: currentUser?.email,
+    isAdmin,
+  });
+
+  // Redirect if not logged in or not an admin
+  if (!currentUser) {
+    console.log('Dashboard redirecting: No current user');
+    return <Navigate to='/admin/login' />;
+  }
+
+  if (!isAdmin) {
+    console.log('Dashboard redirecting: Not an admin');
+    return <Navigate to='/' />;
+  }
+
+  console.log('Dashboard rendering content');
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-      <Typography variant="h4" gutterBottom>
-        Admin Dashboard
-      </Typography>
-      <Typography variant="subtitle1" gutterBottom>
-        Welcome, {currentUser?.email}
-      </Typography>
+    <Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
+      <Paper elevation={3} sx={{ p: 3 }}>
+        <Typography variant='h4' gutterBottom>
+          Admin Dashboard
+        </Typography>
 
-      <Grid container spacing={3} sx={{ mt: 2 }}>
-        {/* News Management */}
-        <Grid item xs={12} md={4}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6" component="div">
-                News Management
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Add, edit, or delete news items for the homepage
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small" component={Link} to="/admin/news">
-                Manage News
-              </Button>
-            </CardActions>
-          </Card>
-        </Grid>
+        <Typography variant='body1' paragraph>
+          Welcome to the admin dashboard, {currentUser.email}!
+        </Typography>
 
-        {/* Academics Management */}
-        <Grid item xs={12} md={4}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6" component="div">
-                Academics Management
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Manage academic content and information
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small" component={Link} to="/admin/academics">
-                Manage Academics
-              </Button>
-            </CardActions>
-          </Card>
-        </Grid>
+        <Typography variant='body1' paragraph>
+          This is a placeholder for the admin dashboard content. You can add
+          various management components here later.
+        </Typography>
 
-        {/* Sports Management */}
-        <Grid item xs={12} md={4}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6" component="div">
-                Sports Management
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Manage sports content, teams and events
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small" component={Link} to="/admin/sports">
-                Manage Sports
-              </Button>
-            </CardActions>
-          </Card>
-        </Grid>
-
-        {/* Form Submissions */}
-        <Grid item xs={12} md={6}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6" component="div">
-                Form Submissions
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                View and manage admission and contact form submissions
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small" component={Link} to="/admin/submissions">
-                View Submissions
-              </Button>
-            </CardActions>
-          </Card>
-        </Grid>
-
-        {/* User Management */}
-        <Grid item xs={12} md={6}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6" component="div">
-                User Management
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Manage admin users and permissions
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small" component={Link} to="/admin/users">
-                Manage Users
-              </Button>
-            </CardActions>
-          </Card>
-        </Grid>
-      </Grid>
+        <Box sx={{ mt: 4, p: 2, bgcolor: '#f5f5f5', borderRadius: 1 }}>
+          <Typography variant='h6' gutterBottom>
+            TODO: Implement these features
+          </Typography>
+          <ul>
+            <li>News Management</li>
+            <li>Academics Management</li>
+            <li>Sports Management</li>
+            <li>Form Submissions</li>
+            <li>User Management</li>
+          </ul>
+        </Box>
+      </Paper>
     </Container>
   );
 };
