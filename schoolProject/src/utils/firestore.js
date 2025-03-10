@@ -1,12 +1,18 @@
-import { collection, getDocs, addDoc, updateDoc, doc, deleteDoc } from 'firebase/firestore';
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  doc,
+  deleteDoc,
+} from 'firebase/firestore';
 import { db } from './config';
 
 // Fetch data for a specific collection
 export const fetchData = async (collectionName) => {
   try {
     const querySnapshot = await getDocs(collection(db, collectionName));
-    const data =;
-    querySnapshot.forEach((doc) => {
+    const data = querySnapshot.forEach((doc) => {
       data.push({ id: doc.id, ...doc.data() });
     });
     return data;
