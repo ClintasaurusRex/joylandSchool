@@ -63,19 +63,21 @@ const Sports = () => {
           No sports programs are currently available. Please check back later.
         </Typography>
       ) : (
-        <Grid
-          container
-          spacing={4}
-          sx={{
-            "& > .MuiGrid-item": {
-              pt: 0,
-              pl: 0,
-            },
-          }}
-        >
+        <Grid container sx={{ justifyContent: "center" }}>
           {sports.map((sport) => (
-            <Grid item xs={12} md={6} sx={{ boxShadow: 24 }} key={sport.id}>
-              <Card elevation={3}>
+            <Grid
+              item
+              xs={12}
+              md={4}
+              key={sport.id}
+              sx={{ p: 2, display: "flex", flexDirection: "row", alignItems: "center" }}
+            >
+              <Card
+                elevation={3}
+                sx={{
+                  height: "100%",
+                }}
+              >
                 <CardMedia
                   component="img"
                   height="300"
