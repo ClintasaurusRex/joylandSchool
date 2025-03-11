@@ -58,6 +58,8 @@ const AdminRoute = ({ children }) => {
   return children;
 };
 
+import PasswordReset from './components/admin/PasswordReset';
+
 function App() {
   return (
     <AuthProvider>
@@ -77,6 +79,7 @@ function App() {
             {/* Auth Routes */}
             <Route path='admin/login' element={<Login />} />
             <Route path='admin/signup' element={<AdminSignUp />} />
+            <Route path='admin/reset-password' element={<PasswordReset />} />
             {/* Admin Routes - Protected */}
             <Route
               path='admin/dashboard'

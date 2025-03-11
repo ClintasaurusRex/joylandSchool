@@ -51,7 +51,7 @@ const Login = () => {
         setLoading(false);
       }, 3200);
     } catch (error) {
-      setError(error.message);
+      setError('Password is incorrect');
       console.error('Login error:', error);
       setLoading(false);
     }
@@ -120,6 +120,22 @@ const Login = () => {
               value={formData.password}
               onChange={handleChange}
             />
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'flex-end',
+                width: '100%',
+                mt: 1,
+              }}
+            >
+              <Button
+                variant='text'
+                size='small'
+                onClick={() => navigate('/admin/reset-password')}
+              >
+                Forgot password?
+              </Button>
+            </Box>
             <Button
               type='submit'
               fullWidth
