@@ -1,4 +1,15 @@
-@use "./variables" as *;
+@use './variables' as *;
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  // Add background color and padding as needed
+  // background-color: #your-color;
+  // padding: 10px 0;
+}
 
 .footer-link:hover {
   transform: scale(1.2);

@@ -89,46 +89,6 @@ function App() {
                 </AdminRoute>
               }
             />
-            {/* <Route
-              path='admin/news'
-              element={
-                <AdminRoute>
-                  <NewsManager />
-                </AdminRoute>
-              }
-            />
-            <Route
-              path='admin/academics'
-              element={
-                <AdminRoute>
-                  <AcademicsManager />
-                </AdminRoute>
-              }
-            />
-            <Route
-              path='admin/sports'
-              element={
-                <AdminRoute>
-                  <SportsManager />
-                </AdminRoute>
-              }
-            />
-            <Route
-              path='admin/submissions'
-              element={
-                <AdminRoute>
-                  <FormSubmissions />
-                </AdminRoute>
-              }
-            />
-            <Route
-              path='admin/users'
-              element={
-                <AdminRoute>
-                  <UserManager />
-                </AdminRoute>
-              }
-            /> */}
           </Routes>
         </div>
         <Footer />

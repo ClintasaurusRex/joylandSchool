@@ -163,7 +163,7 @@ const HomePage = () => {
             container
             spacing={4}
             sx={{
-              mt: 4,
+              mt: 2,
               flexGrow: 1,
               minHeight: 'calc(100vh - 400px)',
             }}

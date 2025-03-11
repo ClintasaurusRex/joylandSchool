@@ -12,6 +12,7 @@ const Footer = () => {
         color: 'white',
         py: 3,
         mt: '0',
+        mb: 0,
       }}
     >
       <Container maxWidth='xl'>
