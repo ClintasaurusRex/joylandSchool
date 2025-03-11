@@ -175,14 +175,6 @@ const HomePage = () => {
               <Typography paragraph className='news-start'>
                 Stay updated with the latest events, achievements, and
                 announcements from our school community.
-                <Button
-                  variant='outlined'
-                  color='primary'
-                  sx={{ mb: 4 }}
-                  onClick={() => navigate('/news')}
-                >
-                  View All News
-                </Button>
               </Typography>
             </Grid>
 

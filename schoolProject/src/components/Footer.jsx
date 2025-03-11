@@ -79,7 +79,7 @@ const Footer = () => {
           >
             Login
           </Link>
-          <Link
+          {/* <Link
             className='footer-link'
             component={RouterLink}
             to='admin/signup'
@@ -87,7 +87,7 @@ const Footer = () => {
             sx={{ mx: 5, textDecoration: 'none' }}
           >
             Admin Sign Up
-          </Link>
+          </Link> */}
         </Box>
         <Typography variant='body2' align='center'>
           © {new Date().getFullYear()} Joyland Prime Academy.
