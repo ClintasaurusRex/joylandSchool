@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Typography, Grid, Card, CardContent } from "@mui/material";
+import { Container, Typography, Grid, Card, CardContent, Button } from "@mui/material";
 import "../styles/Academic.scss";
 
 const Academic = () => {
@@ -102,6 +102,9 @@ const Academic = () => {
           </Card>
         </Grid>
       </Grid>
+      <Button sx={{ mt: 5, display: "block", mx: "auto" }} color="primary" variant="contained">
+        Contact Us
+      </Button>
     </Container>
   );
 };
