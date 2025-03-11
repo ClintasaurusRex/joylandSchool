@@ -9,6 +9,10 @@ import {
   Box,
   Divider,
   CircularProgress,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
 } from '@mui/material';
 import { styled } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
@@ -26,6 +30,8 @@ const HomePage = () => {
   const navigate = useNavigate();
   const [newsItems, setNewsItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedNews, setSelectedNews] = useState(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   // Fetch news data from Firebase
   useEffect(() => {
@@ -46,6 +52,15 @@ const HomePage = () => {
 
     getNews();
   }, []);
+
+  const handleReadMore = (news) => {
+    setSelectedNews(news);
+    setDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setDialogOpen(false);
+  };
 
   return (
     <div>
@@ -160,7 +175,12 @@ const HomePage = () => {
               <Typography paragraph className='news-start'>
                 Stay updated with the latest events, achievements, and
                 announcements from our school community.
-                <Button variant='outlined' color='primary' sx={{ mb: 4 }}>
+                <Button
+                  variant='outlined'
+                  color='primary'
+                  sx={{ mb: 4 }}
+                  onClick={() => navigate('/news')}
+                >
                   View All News
                 </Button>
               </Typography>
@@ -203,7 +223,11 @@ const HomePage = () => {
                           : news.content}
                       </Typography>
                       <Box sx={{ textAlign: 'right' }}>
-                        <Button size='small' color='primary'>
+                        <Button
+                          size='small'
+                          color='primary'
+                          onClick={() => handleReadMore(news)}
+                        >
                           Read More
                         </Button>
                       </Box>
@@ -215,6 +239,37 @@ const HomePage = () => {
           </Grid>
         </Container>
       </div>
+
+      {/* News Detail Dialog */}
+      <Dialog
+        open={dialogOpen}
+        onClose={handleCloseDialog}
+        maxWidth='md'
+        fullWidth
+      >
+        {selectedNews && (
+          <>
+            <DialogTitle>
+              {selectedNews.title}
+              <Typography
+                variant='caption'
+                color='text.secondary'
+                display='block'
+              >
+                {selectedNews.date}
+              </Typography>
+            </DialogTitle>
+            <DialogContent dividers>
+              <Typography variant='body1' sx={{ whiteSpace: 'pre-wrap' }}>
+                {selectedNews.content}
+              </Typography>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleCloseDialog}>Close</Button>
+            </DialogActions>
+          </>
+        )}
+      </Dialog>
     </div>
   );
 };
