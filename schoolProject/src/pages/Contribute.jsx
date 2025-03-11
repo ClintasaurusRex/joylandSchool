@@ -61,7 +61,17 @@ const Contribute = () => {
         <Typography className="onsite-card" variant="h3" gutterBottom>
           Onsite Volunteer Opportunities
         </Typography>
-        <Grid2 className="job-grid" container spacing={3}>
+        <Grid2
+          className="job-grid"
+          container
+          spacing={3}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "row",
+            justifyContent: "center",
+          }}
+        >
           {opportunities.map((opportunity, index) => (
             <Grid2 item size={{ xs: 12, sm: 6, md: 7, lg: 3 }} key={index}>
               <Card sx={{ height: "100%" }}>
@@ -104,16 +114,16 @@ const Contribute = () => {
               </Card>
             </Grid2>
           ))}
-          <Button
-            className="content-card-btn"
-            variant="contained"
-            color="primary"
-            sx={{ mt: 20 }}
-            onClick={() => navigate("/contact")}
-          >
-            Learn More
-          </Button>
         </Grid2>
+        <Button
+          className="content-card-btn"
+          variant="contained"
+          color="primary"
+          sx={{ mb: 20, display: "block", mx: "auto" }}
+          onClick={() => navigate("/contact")}
+        >
+          Learn More
+        </Button>
       </Card>
     </Box>
   );
