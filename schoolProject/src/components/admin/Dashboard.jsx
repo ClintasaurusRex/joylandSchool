@@ -3,6 +3,7 @@ import { Box, Typography, Container, Paper, Tabs, Tab } from '@mui/material';
 import { useAuth } from '../../context/AuthContext';
 import { Navigate } from 'react-router-dom';
 import NewsManager from './NewsManager';
+import FormSubmissions from './FormSubmissions';
 
 // TabPanel component to handle tab content display
 function TabPanel(props) {
@@ -60,6 +61,7 @@ const Dashboard = () => {
           >
             <Tab label='Overview' />
             <Tab label='News Management' />
+            <Tab label='Form Submissions' />
             {/* Add more tabs as you implement other features */}
           </Tabs>
         </Box>
@@ -80,6 +82,10 @@ const Dashboard = () => {
                   News Management - Add, edit, and delete news items that appear
                   on the homepage
                 </li>
+                <li>
+                  Form Submissions - View and manage admission requests and
+                  contact messages
+                </li>
                 <li>More features coming soon...</li>
               </ul>
             </Box>
@@ -88,6 +94,10 @@ const Dashboard = () => {
 
         <TabPanel value={tabValue} index={1}>
           <NewsManager />
+        </TabPanel>
+
+        <TabPanel value={tabValue} index={2}>
+          <FormSubmissions />
         </TabPanel>
       </Paper>
     </Container>

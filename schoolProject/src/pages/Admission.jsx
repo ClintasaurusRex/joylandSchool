@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "../styles/admission.scss";
+import React, { useState } from 'react';
+import '../styles/admission.scss';
 import {
   Container,
   Paper,
@@ -12,23 +12,31 @@ import {
   Select,
   MenuItem,
   Box,
-} from "@mui/material";
+  Alert,
+  Snackbar,
+  CircularProgress,
+} from '@mui/material';
+import { submitAdmissionForm } from '../utils/adminService';
 
 const Admission = () => {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    dateOfBirth: "",
-    gender: "",
-    email: "",
-    phone: "",
-    address: "",
-    previousSchool: "",
-    gradeApplying: "",
-    parentName: "",
-    parentPhone: "",
-    parentEmail: "",
+    firstName: '',
+    lastName: '',
+    dateOfBirth: '',
+    gender: '',
+    email: '',
+    phone: '',
+    address: '',
+    previousSchool: '',
+    gradeApplying: '',
+    parentName: '',
+    parentPhone: '',
+    parentEmail: '',
   });
+
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,29 +44,65 @@ const Admission = () => {
       ...prevState,
       [name]: value,
     }));
-    console.log(setFormData);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setLoading(true);
+    setError('');
+
+    try {
+      await submitAdmissionForm(formData);
+      setSuccess(true);
+      setFormData({
+        firstName: '',
+        lastName: '',
+        dateOfBirth: '',
+        gender: '',
+        email: '',
+        phone: '',
+        address: '',
+        previousSchool: '',
+        gradeApplying: '',
+        parentName: '',
+        parentPhone: '',
+        parentEmail: '',
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setError(
+        'There was an error submitting your application. Please try again.'
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleCloseSnackbar = () => {
+    setSuccess(false);
   };
 
   return (
-    <Container component="main" maxWidth="md" sx={{ mb: 4 }}>
-      <Paper className="admission-main" elevation={3} sx={{ p: 4, mt: 8 }}>
-        <Typography component="h1" variant="h4" align="center" gutterBottom>
+    <Container component='main' maxWidth='md' sx={{ mb: 4 }}>
+      <Paper className='admission-main' elevation={3} sx={{ p: 4, mt: 8 }}>
+        <Typography component='h1' variant='h4' align='center' gutterBottom>
           Student Admission Form
         </Typography>
 
-        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 4 }}>
+        {error && (
+          <Alert severity='error' sx={{ mb: 2 }}>
+            {error}
+          </Alert>
+        )}
+
+        <Box component='form' onSubmit={handleSubmit} sx={{ mt: 4 }}>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
               <TextField
                 required
                 fullWidth
-                label="First Name"
-                name="firstName"
+                label='First Name'
+                name='firstName'
                 value={formData.firstName}
                 onChange={handleChange}
               />
@@ -68,8 +112,8 @@ const Admission = () => {
               <TextField
                 required
                 fullWidth
-                label="Last Name"
-                name="lastName"
+                label='Last Name'
+                name='lastName'
                 value={formData.lastName}
                 onChange={handleChange}
               />
@@ -79,9 +123,9 @@ const Admission = () => {
               <TextField
                 required
                 fullWidth
-                type="date"
-                label="Date of Birth"
-                name="dateOfBirth"
+                type='date'
+                label='Date of Birth'
+                name='dateOfBirth'
                 value={formData.dateOfBirth}
                 onChange={handleChange}
                 InputLabelProps={{ shrink: true }}
@@ -92,14 +136,14 @@ const Admission = () => {
               <FormControl fullWidth>
                 <InputLabel>Gender</InputLabel>
                 <Select
-                  name="gender"
+                  name='gender'
                   value={formData.gender}
                   onChange={handleChange}
-                  label="Gender"
+                  label='Gender'
                 >
-                  <MenuItem value="male">Male</MenuItem>
-                  <MenuItem value="female">Female</MenuItem>
-                  <MenuItem value="other">Other</MenuItem>
+                  <MenuItem value='male'>Male</MenuItem>
+                  <MenuItem value='female'>Female</MenuItem>
+                  <MenuItem value='other'>Other</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -108,9 +152,9 @@ const Admission = () => {
               <TextField
                 required
                 fullWidth
-                label="Email"
-                name="email"
-                type="email"
+                label='Email'
+                name='email'
+                type='email'
                 value={formData.email}
                 onChange={handleChange}
               />
@@ -120,8 +164,8 @@ const Admission = () => {
               <TextField
                 required
                 fullWidth
-                label="Phone"
-                name="phone"
+                label='Phone'
+                name='phone'
                 value={formData.phone}
                 onChange={handleChange}
               />
@@ -131,8 +175,8 @@ const Admission = () => {
               <TextField
                 required
                 fullWidth
-                label="Address"
-                name="address"
+                label='Address'
+                name='address'
                 multiline
                 rows={3}
                 value={formData.address}
@@ -144,8 +188,8 @@ const Admission = () => {
               <TextField
                 required
                 fullWidth
-                label="Previous School"
-                name="previousSchool"
+                label='Previous School'
+                name='previousSchool'
                 value={formData.previousSchool}
                 onChange={handleChange}
               />
@@ -155,8 +199,8 @@ const Admission = () => {
               <TextField
                 required
                 fullWidth
-                label="Grade Applying For"
-                name="gradeApplying"
+                label='Grade Applying For'
+                name='gradeApplying'
                 value={formData.gradeApplying}
                 onChange={handleChange}
               />
@@ -166,8 +210,8 @@ const Admission = () => {
               <TextField
                 required
                 fullWidth
-                label="Parent Name"
-                name="parentName"
+                label='Parent Name'
+                name='parentName'
                 value={formData.parentName}
                 onChange={handleChange}
               />
@@ -177,8 +221,8 @@ const Admission = () => {
               <TextField
                 required
                 fullWidth
-                label="Parent Phone"
-                name="parentPhone"
+                label='Parent Phone'
+                name='parentPhone'
                 value={formData.parentPhone}
                 onChange={handleChange}
               />
@@ -188,9 +232,9 @@ const Admission = () => {
               <TextField
                 required
                 fullWidth
-                label="Parent Email"
-                name="parentEmail"
-                type="email"
+                label='Parent Email'
+                name='parentEmail'
+                type='email'
                 value={formData.parentEmail}
                 onChange={handleChange}
               />
@@ -198,19 +242,37 @@ const Admission = () => {
 
             <Grid item xs={12}>
               <Button
-                onClick={() => console.log("Submit Btn Clicked")}
-                type="submit"
+                type='submit'
                 fullWidth
-                variant="contained"
-                size="large"
+                variant='contained'
+                size='large'
+                disabled={loading}
                 sx={{ mt: 3 }}
               >
-                Submit Application
+                {loading ? (
+                  <CircularProgress size={24} />
+                ) : (
+                  'Submit Application'
+                )}
               </Button>
             </Grid>
           </Grid>
         </Box>
       </Paper>
+
+      <Snackbar
+        open={success}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+      >
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity='success'
+          sx={{ width: '100%' }}
+        >
+          Your application has been submitted successfully!
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };

@@ -95,6 +95,26 @@ export const updateSubmissionStatus = async (
   });
 };
 
+export const submitAdmissionForm = async (formData) => {
+  return await addData('admissions', {
+    ...formData,
+    status: 'pending',
+    submittedAt: serverTimestamp(),
+  });
+};
+
+export const submitContactForm = async (formData) => {
+  return await addData('contacts', {
+    ...formData,
+    status: 'pending',
+    submittedAt: serverTimestamp(),
+  });
+};
+
+export const deleteSubmission = async (collectionName, submissionId) => {
+  return await deleteData(collectionName, submissionId);
+};
+
 // User Management for Admins
 export const addAdminUser = async (userData) => {
   return await addData('users', {
