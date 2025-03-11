@@ -223,7 +223,7 @@ const FormSubmissions = () => {
                         <TableCell>Grade</TableCell>
                         <TableCell>Submitted</TableCell>
                         <TableCell>Status</TableCell>
-                        <TableCell>Actions</TableCell>
+                        <TableCell align='right'>Actions</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
@@ -560,14 +560,13 @@ const FormSubmissions = () => {
         )}
       </Dialog>
 
-      {/* Add Delete Confirmation Dialog */}
+      {/* Delete Confirmation Dialog */}
       <Dialog open={deleteDialogOpen} onClose={handleDeleteCancel}>
         <DialogTitle>Confirm Deletion</DialogTitle>
         <DialogContent>
           <Typography>
-            Are you sure you want to delete this{' '}
-            {tabValue === 0 ? 'admission request' : 'contact message'}? This
-            action cannot be undone.
+            Are you sure you want to delete this submission? This action cannot
+            be undone.
           </Typography>
         </DialogContent>
         <DialogActions>
