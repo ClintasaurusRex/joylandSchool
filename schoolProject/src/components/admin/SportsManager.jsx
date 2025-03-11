@@ -174,7 +174,6 @@ const SportsManager = () => {
 
   const handleDialogClose = () => {
     setDialogOpen(false);
-    setError('');
   };
 
   const handleDeleteCancel = () => {
@@ -605,10 +604,11 @@ const SportsManager = () => {
               margin='normal'
               fullWidth
               id='imageUrl'
-              label='Image URL (optional)'
+              label='Image URL'
               name='imageUrl'
               value={formData.imageUrl}
               onChange={handleChange}
+              helperText='Enter the URL of an image (e.g., https://example.com/image.jpg)'
             />
           </Box>
         </DialogContent>
