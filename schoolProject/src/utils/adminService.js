@@ -1,7 +1,14 @@
 import { serverTimestamp } from 'firebase/firestore';
 import { addData, updateData, deleteData, fetchData } from './firestore';
 import { db } from './config';
-import { doc, setDoc, updateDoc, getDoc } from 'firebase/firestore';
+import {
+  doc,
+  setDoc,
+  updateDoc,
+  getDoc,
+  collection,
+  getDocs,
+} from 'firebase/firestore';
 
 // News Management
 export const addNewsItem = async (newsData) => {
@@ -72,7 +79,31 @@ export const deleteSportsContent = async (contentId) => {
 };
 
 export const fetchSports = async () => {
-  return await fetchData('sports');
+  const sportsCollection = collection(db, 'sports');
+  const snapshot = await getDocs(sportsCollection);
+  return snapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+};
+
+export const addSport = async (sportData) => {
+  return await addData('sports', {
+    ...sportData,
+    createdAt: serverTimestamp(),
+  });
+};
+
+export const updateSport = async (id, sportData) => {
+  const sportRef = doc(db, 'sports', id);
+  return await updateDoc(sportRef, {
+    ...sportData,
+    updatedAt: serverTimestamp(),
+  });
+};
+
+export const deleteSport = async (id) => {
+  return await deleteData('sports', id);
 };
 
 // Form Submissions Management
@@ -174,7 +205,7 @@ export const fetchUsers = async () => {
 export const setJoylandSchoolsAsAdmin = async () => {
   try {
     // Hardcoded Joyland Schools admin UID
-    const joylandAdminUid = 'uPOMpCzbSqTapSDqUdx8P8v20t13';
+    const joylandAdminUid = import.meta.env.VITE_TEST_ADMIN_UID;
 
     await updateUserRole(joylandAdminUid, 'admin');
     console.log('Joyland Schools user successfully set as admin');

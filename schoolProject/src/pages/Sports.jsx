@@ -1,105 +1,118 @@
-import React from "react";
-import { Container, Typography, Grid, Card, CardContent, CardMedia } from "@mui/material";
+import React, { useState, useEffect } from 'react';
+import {
+  Container,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+  CardMedia,
+  Box,
+  Divider,
+  Chip,
+  CircularProgress,
+} from '@mui/material';
+import { fetchSports } from '../utils/adminService';
 
 const Sports = () => {
-  const sportsOffered = [
-    {
-      name: "Basketball",
-      image: "/images/basketball.jpg",
-      description:
-        "Join our competitive basketball teams for both boys and girls. Practice sessions and regular tournaments throughout the year.",
-    },
-    {
-      name: "Soccer",
-      image: "/images/soccer.jpg",
-      description:
-        "Our soccer program includes junior and senior teams. Regular training and interschool competitions.",
-    },
-    {
-      name: "Swimming",
-      image: "/images/swimming.jpg",
-      description:
-        "Professional swimming instruction and competitive swim team opportunities available.",
-    },
-    {
-      name: "Track & Field",
-      image: "/images/track.jpg",
-      description:
-        "Comprehensive track and field program including sprinting, long-distance running, and field events.",
-    },
-  ];
+  const [sports, setSports] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const loadSports = async () => {
+      try {
+        setLoading(true);
+        const sportsData = await fetchSports();
+        setSports(sportsData);
+      } catch (error) {
+        console.error('Error loading sports:', error);
+        setError('Failed to load sports information. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadSports();
+  }, []);
+
+  // Default image if none is provided
+  const defaultImage = 'https://source.unsplash.com/random/300x200/?sports';
 
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Typography variant="h2" component="h1" align="center" gutterBottom>
-        School Sports Program
+    <Container maxWidth='lg' sx={{ mt: 4, mb: 8 }}>
+      <Typography variant='h3' component='h1' gutterBottom align='center'>
+        Sports Programs
       </Typography>
 
-      <Typography variant="h5" component="h2" align="center" sx={{ mb: 4 }}>
-        Developing athletes and building character through sports excellence
+      <Typography variant='h6' paragraph align='center' sx={{ mb: 4 }}>
+        Discover our diverse range of sports activities for students of all ages
+        and skill levels
       </Typography>
 
-      <Grid container spacing={4}>
-        {sportsOffered.map((sport, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index}>
-            <Card sx={{ height: "100%" }}>
-              <CardMedia
-                component="img"
-                height="200"
-                image={sport.image}
-                alt={sport.name}
-                sx={{ objectFit: "cover" }}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h3">
-                  {sport.name}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {sport.description}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+      <Divider sx={{ mb: 4 }} />
 
-      <Typography variant="h4" component="h2" sx={{ mt: 6, mb: 3 }}>
-        Sports Schedule
-      </Typography>
+      {loading ? (
+        <Box sx={{ display: 'flex', justifyContent: 'center', my: 4 }}>
+          <CircularProgress />
+        </Box>
+      ) : error ? (
+        <Typography color='error' align='center'>
+          {error}
+        </Typography>
+      ) : sports.length === 0 ? (
+        <Typography align='center'>
+          No sports programs are currently available. Please check back later.
+        </Typography>
+      ) : (
+        <Grid container spacing={4}>
+          {sports.map((sport) => (
+            <Grid item xs={12} md={6} key={sport.id}>
+              <Card elevation={3}>
+                <CardMedia
+                  component='img'
+                  height='200'
+                  image={sport.imageUrl || defaultImage}
+                  alt={sport.name}
+                />
+                <CardContent>
+                  <Typography variant='h5' component='h2' gutterBottom>
+                    {sport.name}
+                  </Typography>
 
-      <Grid container spacing={2}>
-        <Grid item xs={12} md={6}>
-          <Card sx={{ mb: 2 }}>
-            <CardContent>
-              <Typography variant="h6" component="h3">
-                Fall Season (September - November)
-              </Typography>
-              <Typography variant="body1">
-                • Soccer Practice: Mon & Wed 3:30-5:00 PM
-                <br />
-                • Swimming: Tue & Thu 3:30-5:00 PM
-                <br />• Basketball Training: Fri 3:30-5:30 PM
-              </Typography>
-            </CardContent>
-          </Card>
+                  <Chip
+                    label={
+                      sport.level.charAt(0).toUpperCase() + sport.level.slice(1)
+                    }
+                    color='primary'
+                    size='small'
+                    sx={{ mb: 2 }}
+                  />
+
+                  <Typography variant='body1' paragraph>
+                    {sport.description}
+                  </Typography>
+
+                  <Box sx={{ mt: 2 }}>
+                    <Typography variant='subtitle1' fontWeight='bold'>
+                      Schedule:
+                    </Typography>
+                    <Typography variant='body2'>{sport.schedule}</Typography>
+                  </Box>
+
+                  {sport.coach && (
+                    <Box sx={{ mt: 1 }}>
+                      <Typography variant='subtitle1' fontWeight='bold'>
+                        Coach:
+                      </Typography>
+                      <Typography variant='body2'>{sport.coach}</Typography>
+                    </Box>
+                  )}
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
         </Grid>
-
-        <Grid item xs={12} md={6}>
-          <Card sx={{ mb: 2 }}>
-            <CardContent>
-              <Typography variant="h6" component="h3">
-                Spring Season (March - May)
-              </Typography>
-              <Typography variant="body1">
-                • Track & Field: Mon & Wed 3:30-5:00 PM
-                <br />
-                • Basketball Games: Tue & Thu 4:00-6:00 PM
-                <br />• Swimming Meets: Fri 3:30-5:30 PM
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-      </Grid>
+      )}
     </Container>
   );
 };

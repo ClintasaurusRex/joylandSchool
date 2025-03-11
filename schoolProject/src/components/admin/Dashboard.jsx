@@ -5,6 +5,8 @@ import { Navigate } from 'react-router-dom';
 import NewsManager from './NewsManager';
 import FormSubmissions from './FormSubmissions';
 
+import SportsManager from './SportsManager';
+
 // TabPanel component to handle tab content display
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -62,8 +64,7 @@ const Dashboard = () => {
             <Tab label='Overview' />
             <Tab label='News Management' />
             <Tab label='Form Submissions' />
-
-            {/* Add more tabs as you implement other features */}
+            <Tab label='Sports Management' />
           </Tabs>
         </Box>
 
@@ -87,6 +88,10 @@ const Dashboard = () => {
                   Form Submissions - View and manage admission requests and
                   contact messages
                 </li>
+                <li>
+                  Sports Management - Add, edit, and delete sports programs
+                </li>
+                <li>User Management - Add and manage admin users</li>
               </ul>
             </Box>
           </Box>
@@ -98,6 +103,10 @@ const Dashboard = () => {
 
         <TabPanel value={tabValue} index={2}>
           <FormSubmissions />
+        </TabPanel>
+
+        <TabPanel value={tabValue} index={3}>
+          <SportsManager />
         </TabPanel>
       </Paper>
     </Container>
