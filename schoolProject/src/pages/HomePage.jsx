@@ -38,7 +38,7 @@ const HomePage = () => {
     const getNews = async () => {
       try {
         const data = await fetchNews();
-        // Sort news by date (newest first)
+
         const sortedNews = data.sort(
           (a, b) => new Date(b.date) - new Date(a.date)
         );
