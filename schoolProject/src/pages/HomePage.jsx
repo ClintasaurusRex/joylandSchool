@@ -163,9 +163,9 @@ const HomePage = () => {
             container
             spacing={4}
             sx={{
-              mt: 2,
+              mt: 4,
               flexGrow: 1,
-              minHeight: 'calc(100vh - 400px)',
+              minHeight: 'calc(100vh - 600px)',
             }}
           >
             <Grid item xs={12}>
