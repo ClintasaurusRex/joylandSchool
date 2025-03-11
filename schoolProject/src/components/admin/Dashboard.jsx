@@ -91,7 +91,6 @@ const Dashboard = () => {
                 <li>
                   Sports Management - Add, edit, and delete sports programs
                 </li>
-                <li>User Management - Add and manage admin users</li>
               </ul>
             </Box>
           </Box>
