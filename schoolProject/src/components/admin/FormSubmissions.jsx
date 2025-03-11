@@ -55,6 +55,8 @@ const FormSubmissions = () => {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
   const [deleteLoading, setDeleteLoading] = useState(false);
+  const [approveLoading, setApproveLoading] = useState(false);
+  const [rejectLoading, setRejectLoading] = useState(false);
 
   useEffect(() => {
     loadData();
@@ -106,11 +108,20 @@ const FormSubmissions = () => {
 
   const handleUpdateStatus = async (id, status, isAdmission = true) => {
     try {
+      if (status === 'approved') {
+        setApproveLoading(true);
+      } else if (status === 'rejected') {
+        setRejectLoading(true);
+      }
+
       const collection = isAdmission ? 'admissions' : 'contacts';
       await updateSubmissionStatus(collection, id, status);
       loadData(); // Reload data after update
     } catch (error) {
       console.error('Error updating status:', error);
+    } finally {
+      setApproveLoading(false);
+      setRejectLoading(false);
     }
   };
 
@@ -217,7 +228,11 @@ const FormSubmissions = () => {
                     </TableHead>
                     <TableBody>
                       {admissions.map((admission) => (
-                        <TableRow key={admission.id}>
+                        <TableRow
+                          key={admission.id}
+                          hover
+                          onClick={() => handleViewDetails(admission)}
+                        >
                           <TableCell>{`${admission.firstName} ${admission.lastName}`}</TableCell>
                           <TableCell>{admission.gradeApplying}</TableCell>
                           <TableCell>
@@ -226,34 +241,50 @@ const FormSubmissions = () => {
                           <TableCell>
                             {getStatusChip(admission.status)}
                           </TableCell>
-                          <TableCell>
-                            <Button
-                              size='small'
-                              onClick={() => handleViewDetails(admission)}
-                            >
-                              View
-                            </Button>
-                            {admission.status === 'pending' && (
+                          <TableCell align='right'>
+                            {admission.status === 'pending' ? (
                               <>
                                 <Button
                                   size='small'
                                   color='success'
-                                  onClick={() =>
-                                    handleUpdateStatus(admission.id, 'approved')
-                                  }
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleUpdateStatus(
+                                      admission.id,
+                                      'approved'
+                                    );
+                                  }}
+                                  disabled={approveLoading}
                                 >
                                   Approve
                                 </Button>
                                 <Button
                                   size='small'
                                   color='error'
-                                  onClick={() =>
-                                    handleUpdateStatus(admission.id, 'rejected')
-                                  }
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleUpdateStatus(
+                                      admission.id,
+                                      'rejected'
+                                    );
+                                  }}
+                                  disabled={rejectLoading}
                                 >
                                   Reject
                                 </Button>
                               </>
+                            ) : (
+                              <Tooltip title='Delete'>
+                                <IconButton
+                                  color='error'
+                                  size='small'
+                                  onClick={(e) =>
+                                    handleDeleteClick(admission, e)
+                                  }
+                                >
+                                  <DeleteIcon />
+                                </IconButton>
+                              </Tooltip>
                             )}
                           </TableCell>
                         </TableRow>
@@ -474,8 +505,12 @@ const FormSubmissions = () => {
                       handleUpdateStatus(selectedSubmission.id, 'approved');
                       handleCloseDetails();
                     }}
+                    disabled={approveLoading}
+                    startIcon={
+                      approveLoading ? <CircularProgress size={20} /> : null
+                    }
                   >
-                    Approve
+                    {approveLoading ? 'Approving...' : 'Approve'}
                   </Button>
                   <Button
                     color='error'
@@ -483,10 +518,26 @@ const FormSubmissions = () => {
                       handleUpdateStatus(selectedSubmission.id, 'rejected');
                       handleCloseDetails();
                     }}
+                    disabled={rejectLoading}
+                    startIcon={
+                      rejectLoading ? <CircularProgress size={20} /> : null
+                    }
                   >
-                    Reject
+                    {rejectLoading ? 'Rejecting...' : 'Reject'}
                   </Button>
                 </>
+              )}
+              {tabValue === 0 && selectedSubmission.status !== 'pending' && (
+                <Button
+                  color='error'
+                  onClick={() => {
+                    setItemToDelete(selectedSubmission);
+                    setDeleteDialogOpen(true);
+                    handleCloseDetails();
+                  }}
+                >
+                  Delete
+                </Button>
               )}
               {tabValue === 1 && selectedSubmission.status === 'pending' && (
                 <Button
