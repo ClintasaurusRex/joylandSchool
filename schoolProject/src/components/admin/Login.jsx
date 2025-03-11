@@ -14,7 +14,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../utils/config';
 import { useNavigate } from 'react-router-dom';
-import { setTestUserAsAdmin } from '../../utils/adminService';
+import { setJoylandSchoolsAsAdmin } from '../../utils/adminService';
 import { useAuth } from '../../context/AuthContext';
 
 const Login = () => {
@@ -50,6 +50,15 @@ const Login = () => {
         setLoginSuccess(true);
         setLoading(false);
       }, 3200);
+
+      if (formData.email === import.meta.env.VITE_TEST_ADMIN_EMAIL) {
+        try {
+          // Set this user as admin if they're not already
+          await setJoylandSchoolsAsAdmin();
+        } catch (error) {
+          console.error('Error setting Joyland Schools as admin:', error);
+        }
+      }
     } catch (error) {
       setError('Password is incorrect');
       console.error('Login error:', error);

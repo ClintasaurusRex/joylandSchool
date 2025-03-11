@@ -62,6 +62,7 @@ const Dashboard = () => {
             <Tab label='Overview' />
             <Tab label='News Management' />
             <Tab label='Form Submissions' />
+
             {/* Add more tabs as you implement other features */}
           </Tabs>
         </Box>
@@ -86,7 +87,6 @@ const Dashboard = () => {
                   Form Submissions - View and manage admission requests and
                   contact messages
                 </li>
-                <li>More features coming soon...</li>
               </ul>
             </Box>
           </Box>

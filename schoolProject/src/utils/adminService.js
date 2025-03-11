@@ -140,7 +140,7 @@ export const updateUserRole = async (uid, role) => {
         uid,
         role,
         createdAt: new Date(),
-        email: import.meta.env.VITE_TEST_ADMIN_EMAIL, // Use environment variable
+        email: import.meta.env.VITE_TEST_ADMIN_EMAIL,
       });
     }
 
@@ -156,16 +156,31 @@ export const fetchUsers = async () => {
 };
 
 // Hardcoded function to set test.codemajic@gmail.com as admin
-export const setTestUserAsAdmin = async () => {
-  try {
-    // Use environment variable for the test user UID
-    const testUserUid = import.meta.env.VITE_TEST_ADMIN_UID;
+// export const setTestUserAsAdmin = async () => {
+//   try {
+//     // Use environment variable for the test user UID
+//     const testUserUid = import.meta.env.VITE_TEST_ADMIN_UID;
 
-    await updateUserRole(testUserUid, 'admin');
-    console.log('Test user successfully set as admin');
+//     await updateUserRole(testUserUid, 'admin');
+//     console.log('Test user successfully set as admin');
+//     return { success: true };
+//   } catch (error) {
+//     console.error('Error setting test user as admin:', error);
+//     return { success: false, error };
+//   }
+// };
+
+// Add this function after the setTestUserAsAdmin function
+export const setJoylandSchoolsAsAdmin = async () => {
+  try {
+    // Hardcoded Joyland Schools admin UID
+    const joylandAdminUid = 'uPOMpCzbSqTapSDqUdx8P8v20t13';
+
+    await updateUserRole(joylandAdminUid, 'admin');
+    console.log('Joyland Schools user successfully set as admin');
     return { success: true };
   } catch (error) {
-    console.error('Error setting test user as admin:', error);
+    console.error('Error setting Joyland Schools as admin:', error);
     return { success: false, error };
   }
 };
