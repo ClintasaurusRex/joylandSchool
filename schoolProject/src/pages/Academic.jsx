@@ -1,5 +1,6 @@
 import React from "react";
-import { Container, Typography, Grid, Card, CardContent, Button } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
+import { Container, Typography, Grid, Card, CardContent, Button, Box, Link } from "@mui/material";
 import "../styles/Academic.scss";
 
 const Academic = () => {
@@ -102,9 +103,16 @@ const Academic = () => {
           </Card>
         </Grid>
       </Grid>
-      <Button sx={{ mt: 5, display: "block", mx: "auto" }} color="primary" variant="contained">
-        Contact Us
-      </Button>
+      <Box sx={{ mt: 5, display: "flex", justifyContent: "space-evenly" }}>
+        <Link component={RouterLink} to="/admission">
+          <Button color="primary" variant="contained">
+            Admissions
+          </Button>
+        </Link>
+        <Button color="primary" variant="contained">
+          Contact Us
+        </Button>
+      </Box>
     </Container>
   );
 };
