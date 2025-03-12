@@ -50,15 +50,16 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <Link className="nav-link" to="/admission">
-              Admission
-            </Link>
-          </li>
-          <li>
             <Link className="nav-link" to="/academic">
               Academic
             </Link>
           </li>
+          <li>
+            <Link className="nav-link" to="/admission">
+              Admission
+            </Link>
+          </li>
+
           <li>
             <Link className="nav-link" to="/sports">
               Sports
