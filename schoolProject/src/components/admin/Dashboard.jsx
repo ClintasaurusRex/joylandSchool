@@ -3,7 +3,7 @@ import { Box, Typography, Container, Paper, Tabs, Tab } from "@mui/material";
 import { useAuth } from "../../context/AuthContext";
 import { Navigate } from "react-router-dom";
 import NewsManager from "./NewsManager";
-import FormSubmissions from "./FormSubmissions";
+import FormSubmissions from "../admin/submissions/FormSubmissions";
 
 import SportsManager from "./SportsManager";
 

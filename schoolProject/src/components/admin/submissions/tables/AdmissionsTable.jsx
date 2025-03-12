@@ -12,7 +12,7 @@ import {
   Tooltip,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import StatusChip from "./StatusChip";
+import StatusChip from "../ui/StatusChip";
 import { formatDate } from "../../../../utils/formatters";
 
 const AdmissionsTable = ({

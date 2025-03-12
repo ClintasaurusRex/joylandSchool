@@ -179,28 +179,28 @@ const DetailsDialog = ({
         )}
       </DialogContent>
       <DialogActions sx={{ p: 2, justifyContent: "space-between" }}>
-        <Button variant="outlined" color="error" onClick={() => onDelete(submission.id)}>
+        <Button variant="contained" color="error" onClick={() => onDelete(submission.id)}>
           Delete
         </Button>
         <Box>
           {submission.status === "pending" && (
             <>
               <Button
-                variant="outlined"
-                color="error"
-                onClick={() => onUpdateStatus(submission.id, "rejected")}
-                disabled={rejectLoading}
-                sx={{ mr: 1 }}
-              >
-                {rejectLoading ? <CircularProgress size={24} /> : "Reject"}
-              </Button>
-              <Button
                 variant="contained"
                 color="primary"
                 onClick={() => onUpdateStatus(submission.id, "approved")}
                 disabled={approveLoading}
+                sx={{ mr: 1 }}
               >
                 {approveLoading ? <CircularProgress size={24} /> : "Approve"}
+              </Button>
+              <Button
+                variant="contained"
+                color="error"
+                onClick={() => onUpdateStatus(submission.id, "rejected")}
+                disabled={rejectLoading}
+              >
+                {rejectLoading ? <CircularProgress size={24} /> : "Reject"}
               </Button>
             </>
           )}
