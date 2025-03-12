@@ -1,4 +1,4 @@
-@use './styles/variables' as *;
+@use "./styles/variables" as *;
 
 /* DO NOT DELETE * */
 * {
@@ -16,5 +16,6 @@ h1 {
   text-decoration: underline;
 }
 .content-container {
-  padding-bottom: 150px; /* Adjust this value based on your footer height */
+  padding-bottom: 150px;
+  min-height: 100vh;
 }
