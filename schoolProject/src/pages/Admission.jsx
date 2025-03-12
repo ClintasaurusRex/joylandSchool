@@ -92,9 +92,11 @@ const Admission = () => {
             {error}
           </Alert>
         )}
-        <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: "100%" }}>
-          Your application has been submitted successfully!
-        </Alert>
+        <Snackbar open={success} autoHideDuration={6000} onClose={handleCloseSnackbar}>
+          <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: "100%" }}>
+            Your application has been submitted successfully!
+          </Alert>
+        </Snackbar>
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 4 }}>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
@@ -255,8 +257,6 @@ const Admission = () => {
           </Grid>
         </Box>
       </Paper>
-
-      <Snackbar open={success} autoHideDuration={6000} onClose={handleCloseSnackbar}></Snackbar>
     </Container>
   );
 };
