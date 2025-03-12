@@ -220,7 +220,7 @@ const DetailsDialog = ({
           ) : (
             // For contact messages
             <>
-              {submission.status === "unread" ? (
+              {submission.status === "unread" || submission.status === "pending" ? (
                 <Button
                   variant="contained"
                   color="primary"
