@@ -148,7 +148,6 @@ const FormSubmissions = () => {
     setItemToDelete(null);
   };
 
-  //////////////////////////////////////// CHANGE TO KENYA ???????????????????????
   const formatDate = (timestamp) => {
     if (!timestamp) return "N/A";
     const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
