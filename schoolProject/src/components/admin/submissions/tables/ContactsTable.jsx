@@ -43,7 +43,7 @@ const ContactsTable = ({ contacts, onViewDetails, onDelete }) => {
               <TableCell>{contact.subject}</TableCell>
               <TableCell>{formatDate(contact.submittedAt)}</TableCell>
               <TableCell>
-                <StatusChip status={contact.status} />
+                <StatusChip status={contact.status} isContact={true} />
               </TableCell>
               <TableCell align="right">
                 <Tooltip title="Delete">

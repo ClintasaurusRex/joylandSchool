@@ -7,6 +7,9 @@ const StatusChip = ({ status, isContact = false }) => {
   if (isContact) {
     // Contact message specific statuses
     switch (status) {
+      case "pending":
+        color = "warning";
+        break;
       case "unread":
         color = "warning";
         break;

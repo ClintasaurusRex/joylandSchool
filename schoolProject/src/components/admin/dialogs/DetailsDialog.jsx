@@ -145,18 +145,25 @@ const DetailsDialog = ({
                           px: 2,
                           py: 0.5,
                           borderRadius: 1,
-                          bgcolor:
-                            submission.status === "pending"
+
+                          bgcolor: isAdmission
+                            ? submission.status === "pending"
                               ? "warning.light"
                               : submission.status === "approved"
                               ? "success.light"
-                              : "error.light",
-                          color:
-                            submission.status === "pending"
+                              : "error.light"
+                            : submission.status === "unread"
+                            ? "warning.light"
+                            : "success.light",
+                          color: isAdmission
+                            ? submission.status === "pending"
                               ? "warning.dark"
                               : submission.status === "approved"
                               ? "success.dark"
-                              : "error.dark",
+                              : "error.dark"
+                            : submission.status === "unread"
+                            ? "warning.dark"
+                            : "success.dark",
                         }}
                       >
                         {submission.status.charAt(0).toUpperCase() + submission.status.slice(1)}
@@ -167,14 +174,18 @@ const DetailsDialog = ({
               </Table>
             </TableContainer>
 
-            <Typography variant="subtitle1" sx={{ mt: 3, mb: 1 }}>
-              Message Content
-            </Typography>
-            <Paper variant="outlined" sx={{ p: 2 }}>
-              <Typography variant="body2" style={{ whiteSpace: "pre-wrap" }}>
-                {submission.message}
-              </Typography>
-            </Paper>
+            {!isAdmission && (
+              <>
+                <Typography variant="subtitle1" sx={{ mt: 3, mb: 1 }}>
+                  Message Content
+                </Typography>
+                <Paper variant="outlined" sx={{ p: 2 }}>
+                  <Typography variant="body2" style={{ whiteSpace: "pre-wrap" }}>
+                    {submission.message}
+                  </Typography>
+                </Paper>
+              </>
+            )}
           </Box>
         )}
       </DialogContent>
@@ -183,25 +194,53 @@ const DetailsDialog = ({
           Delete
         </Button>
         <Box>
-          {submission.status === "pending" && (
+          {isAdmission ? (
+            // For admission requests
+            submission.status === "pending" && (
+              <>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => onUpdateStatus(submission.id, "approved")}
+                  disabled={approveLoading}
+                  sx={{ mr: 1 }}
+                >
+                  {approveLoading ? <CircularProgress size={24} /> : "Approve"}
+                </Button>
+                <Button
+                  variant="contained"
+                  color="error"
+                  onClick={() => onUpdateStatus(submission.id, "rejected")}
+                  disabled={rejectLoading}
+                >
+                  {rejectLoading ? <CircularProgress size={24} /> : "Reject"}
+                </Button>
+              </>
+            )
+          ) : (
+            // For contact messages
             <>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => onUpdateStatus(submission.id, "approved")}
-                disabled={approveLoading}
-                sx={{ mr: 1 }}
-              >
-                {approveLoading ? <CircularProgress size={24} /> : "Approve"}
-              </Button>
-              <Button
-                variant="contained"
-                color="error"
-                onClick={() => onUpdateStatus(submission.id, "rejected")}
-                disabled={rejectLoading}
-              >
-                {rejectLoading ? <CircularProgress size={24} /> : "Reject"}
-              </Button>
+              {submission.status === "unread" ? (
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => onUpdateStatus(submission.id, "read")}
+                  disabled={approveLoading}
+                  sx={{ mr: 1 }}
+                >
+                  {approveLoading ? <CircularProgress size={24} /> : "Mark as Read"}
+                </Button>
+              ) : (
+                <Button
+                  variant="contained"
+                  color="warning"
+                  onClick={() => onUpdateStatus(submission.id, "unread")}
+                  disabled={rejectLoading}
+                  sx={{ mr: 1 }}
+                >
+                  {rejectLoading ? <CircularProgress size={24} /> : "Mark as Unread"}
+                </Button>
+              )}
             </>
           )}
           <Button onClick={onClose} sx={{ ml: 1 }}>
@@ -212,5 +251,4 @@ const DetailsDialog = ({
     </Dialog>
   );
 };
-
 export default DetailsDialog;
