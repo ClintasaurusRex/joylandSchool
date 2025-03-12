@@ -70,12 +70,13 @@ const Sports = () => {
               xs={12}
               md={4}
               key={sport.id}
-              sx={{ p: 2, display: "flex", flexDirection: "row", alignItems: "center" }}
+              sx={{ p: 2, display: "flex", flexDirection: "column", alignItems: "center" }}
             >
               <Card
                 elevation={3}
                 sx={{
                   height: "100%",
+                  width: "100%",
                 }}
               >
                 <CardMedia
