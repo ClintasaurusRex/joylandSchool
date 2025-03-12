@@ -27,7 +27,7 @@ import {
   fetchContactSubmissions,
   updateSubmissionStatus,
   deleteSubmission,
-} from "../../utils/adminService";
+} from "../../../utils/adminService";
 
 // TabPanel component
 function TabPanel(props) {
