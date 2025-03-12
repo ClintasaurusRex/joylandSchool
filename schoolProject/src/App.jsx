@@ -12,6 +12,7 @@ import Contact from "../src/pages/ContactUs";
 import Footer from "./components/Footer";
 import Login from "./components/admin/Login";
 import AdminSignUp from "./components/admin/AdminSignUp";
+import AllNewsPage from "./pages/AllNewsPage";
 import { AuthProvider } from "./context/AuthContext";
 import { useAuth } from "./context/AuthContext";
 
@@ -60,11 +61,11 @@ function App() {
     <AuthProvider>
       <Router>
         <Navbar />
-
         <div className="content-container">
           <Routes>
             {/* Public Routes */}
             <Route index element={<HomePage />} />
+            <Route path="news" element={<AllNewsPage />} />
             <Route path="about" element={<AboutPage />} />
             <Route path="admission" element={<Admission />} />
             <Route path="academic" element={<Academic />} />
