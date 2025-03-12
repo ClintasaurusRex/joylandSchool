@@ -12,6 +12,12 @@ import {
   IconButton,
   Alert,
   Collapse,
+  CircularProgress,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
@@ -21,6 +27,8 @@ import { fetchNews, addNewsItem, updateNewsItem, deleteNewsItem } from "../../ut
 const NewsManager = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [saveLoading, setSaveLoading] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
     content: "",
@@ -28,6 +36,8 @@ const NewsManager = () => {
   });
   const [editingId, setEditingId] = useState(null);
   const [showAlert, setShowAlert] = useState(false);
+  const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState(null);
 
   useEffect(() => {
     loadNews();
@@ -35,7 +45,7 @@ const NewsManager = () => {
 
   useEffect(() => {
     // Check if news items count reached the limit
-    if (news.length >= 15) {
+    if (news.length >= 10) {
       setShowAlert(true);
     } else {
       setShowAlert(false);
@@ -66,10 +76,11 @@ const NewsManager = () => {
     e.preventDefault();
     try {
       if (news.length >= 10 && !editingId) {
-        // Show alert without submitting if trying to add a new item when already at limit
         setShowAlert(true);
         return;
       }
+
+      setSaveLoading(true);
 
       if (editingId) {
         await updateNewsItem(editingId, formData);
@@ -80,6 +91,8 @@ const NewsManager = () => {
       loadNews();
     } catch (error) {
       console.error("Error saving news:", error);
+    } finally {
+      setSaveLoading(false);
     }
   };
 
@@ -92,12 +105,32 @@ const NewsManager = () => {
     setEditingId(item.id);
   };
 
-  const handleDelete = async (id) => {
+  // Open confirmation dialog for deletion
+  const confirmDelete = (id) => {
+    setItemToDelete(id);
+    setDeleteConfirmOpen(true);
+  };
+
+  // Cancel deletion
+  const cancelDelete = () => {
+    setDeleteConfirmOpen(false);
+    setItemToDelete(null);
+  };
+
+  // Proceed with deletion after confirmation
+  const handleDelete = async () => {
+    if (!itemToDelete) return;
+
     try {
-      await deleteNewsItem(id);
+      setDeleteLoading(true);
+      await deleteNewsItem(itemToDelete);
+      setDeleteConfirmOpen(false);
+      setItemToDelete(null);
       loadNews();
     } catch (error) {
       console.error("Error deleting news:", error);
+    } finally {
+      setDeleteLoading(false);
     }
   };
 
@@ -182,12 +215,18 @@ const NewsManager = () => {
                 type="submit"
                 variant="contained"
                 sx={{ mr: 1 }}
-                disabled={news.length >= 5 && !editingId}
+                disabled={saveLoading || (news.length >= 10 && !editingId)}
               >
-                {editingId ? "Update" : "Save"}
+                {saveLoading ? (
+                  <CircularProgress size={24} color="inherit" />
+                ) : editingId ? (
+                  "Update"
+                ) : (
+                  "Save"
+                )}
               </Button>
               {editingId && (
-                <Button variant="outlined" onClick={resetForm}>
+                <Button variant="outlined" onClick={resetForm} disabled={saveLoading}>
                   Cancel
                 </Button>
               )}
@@ -212,10 +251,18 @@ const NewsManager = () => {
                 key={item.id}
                 secondaryAction={
                   <Box>
-                    <IconButton edge="end" onClick={() => handleEdit(item)}>
+                    <IconButton
+                      edge="end"
+                      onClick={() => handleEdit(item)}
+                      disabled={saveLoading || deleteLoading}
+                    >
                       <EditIcon />
                     </IconButton>
-                    <IconButton edge="end" onClick={() => handleDelete(item.id)}>
+                    <IconButton
+                      edge="end"
+                      onClick={() => confirmDelete(item.id)}
+                      disabled={saveLoading || deleteLoading}
+                    >
                       <DeleteIcon />
                     </IconButton>
                   </Box>
@@ -238,6 +285,35 @@ const NewsManager = () => {
           )}
         </List>
       )}
+
+      {/* Delete Confirmation Dialog */}
+      <Dialog
+        open={deleteConfirmOpen}
+        onClose={cancelDelete}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Confirm Deletion"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Are you sure you want to delete this news item? This action cannot be undone.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={cancelDelete} disabled={deleteLoading}>
+            Cancel
+          </Button>
+          <Button
+            onClick={handleDelete}
+            color="error"
+            variant="contained"
+            disabled={deleteLoading}
+            autoFocus
+          >
+            {deleteLoading ? <CircularProgress size={24} color="inherit" /> : "Delete"}
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 };
