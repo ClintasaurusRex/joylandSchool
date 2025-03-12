@@ -109,9 +109,11 @@ const Academic = () => {
             Admissions
           </Button>
         </Link>
-        <Button color="primary" variant="contained">
-          Contact Us
-        </Button>
+        <Link component={RouterLink} to="/contact">
+          <Button color="primary" variant="contained">
+            Contact Us
+          </Button>
+        </Link>
       </Box>
     </Container>
   );
