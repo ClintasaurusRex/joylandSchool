@@ -26,6 +26,20 @@ const StyledHero = styled("div")({
   marginBottom: "2rem",
 });
 
+const FeatureSection = styled("div")(({ bgImage, bgColor }) => ({
+  background: bgImage
+    ? `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${bgImage})`
+    : bgColor || "linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  color: "white",
+  padding: "3rem 0",
+  marginBottom: "1.5rem",
+  position: "relative",
+  borderRadius: "8px",
+  overflow: "hidden",
+}));
+
 const HomePage = () => {
   const navigate = useNavigate();
   const [newsItems, setNewsItems] = useState([]);
@@ -83,156 +97,101 @@ const HomePage = () => {
           </Typography>
         </Box>
 
-        <Grid container spacing={4} direction="column">
-          <Grid item xs={12}>
-            <Card
-              sx={{
-                position: "relative",
-
-                height: 500,
-                maxWidth: 1000,
-                mx: "auto",
-                overflow: "hidden",
-              }}
-            >
-              <Box
-                component="img"
-                src="/blackboard.jpeg"
-                alt="Academic Excellence"
+        {/* Academic Excellence Hero Section */}
+        <FeatureSection bgImage="/blackboard.jpeg" maxWidth="xl">
+          <Container maxWidth="xl">
+            <Box sx={{ maxWidth: 600, height: 500 }}>
+              <Typography variant="h3" gutterBottom>
+                Academic Excellence
+              </Typography>
+              <Typography variant="h6" paragraph>
+                Our commitment to high academic standards ensures students reach their full
+                potential.
+              </Typography>
+              <Button
+                variant="contained"
+                size="large"
                 sx={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  filter: "brightness(0.7)",
+                  mt: 2,
+                  bgcolor: "white",
+                  color: "primary.main",
+                  "&:hover": {
+                    bgcolor: "rgba(255,255,255,0.9)",
+                  },
                 }}
-              />
-              <CardContent
-                sx={{
-                  position: "absolute",
-                  bottom: 0,
-                  width: "100%",
-                  bgcolor: "rgba(255,255,255,0.8)",
-                  p: 4,
-                }}
+                onClick={() => navigate("/academic")}
               >
-                <Typography variant="h5" gutterBottom>
-                  Academic Excellence
-                </Typography>
-                <Typography>
-                  Our commitment to high academic standards ensures students reach their full
-                  potential.
-                </Typography>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  sx={{ mt: 2 }}
-                  onClick={() => navigate("/academic")}
-                >
-                  Learn More
-                </Button>
-              </CardContent>
-            </Card>
-          </Grid>
+                Learn More
+              </Button>
+            </Box>
+          </Container>
+        </FeatureSection>
 
-          <Grid item xs={12}>
-            <Card
-              sx={{
-                position: "relative",
-
-                height: 500,
-                maxWidth: 1000,
-                mx: "auto",
-                overflow: "hidden",
-              }}
-            >
-              <Box
-                component="img"
-                src="classroom.jpeg"
-                alt="Help Us Out"
+        {/* Help Us Out Hero Section */}
+        <FeatureSection
+          bgImage="classroom.jpeg"
+          bgColor="linear-gradient(45deg, #FF5722 30%, #FFC107 90%)"
+        >
+          <Container>
+            <Box sx={{ maxWidth: 600, ml: "auto" }}>
+              <Typography variant="h3" gutterBottom>
+                Help Us Out
+              </Typography>
+              <Typography variant="h6" paragraph>
+                Learn how you can contribute through donations, volunteering, or joining in our
+                community events.
+              </Typography>
+              <Button
+                variant="contained"
+                size="large"
                 sx={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  filter: "brightness(0.7)",
+                  mt: 2,
+                  bgcolor: "white",
+                  color: "#FF5722",
+                  "&:hover": {
+                    bgcolor: "rgba(255,255,255,0.9)",
+                  },
                 }}
-              />
-              <CardContent
-                sx={{
-                  position: "absolute",
-                  bottom: 0,
-                  width: "100%",
-                  bgcolor: "rgba(255,255,255,0.8)",
-                  p: 4,
-                }}
+                onClick={() => navigate("/contribute")}
               >
-                <Typography variant="h5" gutterBottom>
-                  Help Us Out
-                </Typography>
-                <Typography>
-                  Learn how you can contribute through donations, volunteering, or joining in our
-                  community events.
-                </Typography>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  sx={{ mt: 2 }}
-                  onClick={() => navigate("/contribute")}
-                >
-                  Contribute
-                </Button>
-              </CardContent>
-            </Card>
-          </Grid>
+                Contribute
+              </Button>
+            </Box>
+          </Container>
+        </FeatureSection>
 
-          <Grid item xs={12}>
-            <Card
-              sx={{
-                position: "relative",
-
-                height: 500,
-                maxWidth: 1000,
-                mx: "auto",
-                overflow: "hidden",
-              }}
-            >
-              <Box
-                component="img"
-                src="/culture.jpeg"
-                alt="Admissions"
+        {/* Admissions Hero Section */}
+        <FeatureSection
+          bgImage="/culture1.jpeg"
+          bgColor="linear-gradient(45deg, #4CAF50 30%, #8BC34A 90%)"
+        >
+          <Container>
+            <Box sx={{ maxWidth: 600 }}>
+              <Typography variant="h3" gutterBottom>
+                Admissions
+              </Typography>
+              <Typography variant="h6" paragraph>
+                Join our community of learners. Applications now open for the next academic year.
+              </Typography>
+              <Button
+                variant="contained"
+                size="large"
                 sx={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  filter: "brightness(0.7)",
+                  mt: 2,
+                  bgcolor: "white",
+                  color: "#4CAF50",
+                  "&:hover": {
+                    bgcolor: "rgba(255,255,255,0.9)",
+                  },
                 }}
-              />
-              <CardContent
-                sx={{
-                  position: "absolute",
-                  bottom: 0,
-                  width: "100%",
-                  bgcolor: "rgba(255,255,255,0.8)",
-                  p: 4,
-                }}
+                onClick={() => navigate("/admission")}
               >
-                <Typography variant="h5" gutterBottom>
-                  Admissions
-                </Typography>
-                <Typography>
-                  Join our community of learners. Applications now open for the next academic year.
-                </Typography>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  sx={{ mt: 2 }}
-                  onClick={() => navigate("/admission")}
-                >
-                  Apply Now
-                </Button>
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
+                Apply Now
+              </Button>
+            </Box>
+          </Container>
+        </FeatureSection>
+
         <Grid
           container
           spacing={4}
