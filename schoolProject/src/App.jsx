@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "./App.scss";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import Navbar from "./components/Navbar";
 import HomePage from "../src/pages/HomePage";
@@ -23,6 +24,22 @@ import Dashboard from "../src/components/admin/Dashboard";
 // import SportsManager from './components/admin/SportsManager';
 // import FormSubmissions from './components/admin/FormSubmissions';
 // import UserManager from './components/admin/UserManager';
+
+// Create a custom theme with wider container
+const theme = createTheme({
+  components: {
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          maxWidth: "1500px !important",
+          "@media (min-width: 1200px)": {
+            maxWidth: "1500px !important",
+          },
+        },
+      },
+    },
+  },
+});
 
 // Admin route protection
 const AdminRoute = ({ children }) => {
@@ -59,36 +76,38 @@ import PasswordReset from "./components/admin/PasswordReset";
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <Navbar />
-        <div className="content-container">
-          <Routes>
-            {/* Public Routes */}
-            <Route index element={<HomePage />} />
-            <Route path="news" element={<AllNewsPage />} />
-            <Route path="about" element={<AboutPage />} />
-            <Route path="admission" element={<Admission />} />
-            <Route path="academic" element={<Academic />} />
-            <Route path="sports" element={<Sports />} />
-            <Route path="contribute" element={<Contribute />} />
-            <Route path="contact" element={<Contact />} />
-            {/* Auth Routes */}
-            <Route path="admin/login" element={<Login />} />
-            <Route path="admin/signup" element={<AdminSignUp />} />
-            <Route path="admin/reset-password" element={<PasswordReset />} />
-            {/* Admin Routes - Protected */}
-            <Route
-              path="admin/dashboard"
-              element={
-                <AdminRoute>
-                  <Dashboard />
-                </AdminRoute>
-              }
-            />
-          </Routes>
-        </div>
-        <Footer />
-      </Router>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <Navbar />
+          <div className="content-container">
+            <Routes>
+              {/* Public Routes */}
+              <Route index element={<HomePage />} />
+              <Route path="news" element={<AllNewsPage />} />
+              <Route path="about" element={<AboutPage />} />
+              <Route path="admission" element={<Admission />} />
+              <Route path="academic" element={<Academic />} />
+              <Route path="sports" element={<Sports />} />
+              <Route path="contribute" element={<Contribute />} />
+              <Route path="contact" element={<Contact />} />
+              {/* Auth Routes */}
+              <Route path="admin/login" element={<Login />} />
+              <Route path="admin/signup" element={<AdminSignUp />} />
+              <Route path="admin/reset-password" element={<PasswordReset />} />
+              {/* Admin Routes - Protected */}
+              <Route
+                path="admin/dashboard"
+                element={
+                  <AdminRoute>
+                    <Dashboard />
+                  </AdminRoute>
+                }
+              />
+            </Routes>
+          </div>
+          <Footer />
+        </Router>
+      </ThemeProvider>
     </AuthProvider>
   );
 }
