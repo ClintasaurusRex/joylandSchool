@@ -45,15 +45,15 @@ const theme = createTheme({
 const AdminRoute = ({ children }) => {
   const { currentUser, userRole, loading, isAdmin } = useAuth();
 
-  console.log("AdminRoute check:", {
-    currentUser: currentUser?.email,
-    userRole,
-    isAdmin,
-    loading,
-  });
+  // console.log("AdminRoute check:", {
+  //   currentUser: currentUser?.email,
+  //   userRole,
+  //   isAdmin,
+  //   loading,
+  // });
 
   if (loading) {
-    console.log("AdminRoute: Loading...");
+    // console.log("AdminRoute: Loading...");
     return <LoadingScreen />;
   }
 
@@ -63,11 +63,11 @@ const AdminRoute = ({ children }) => {
   }
 
   if (userRole !== "admin") {
-    console.log("AdminRoute: Not admin, redirecting to home");
+    // console.log("AdminRoute: Not admin, redirecting to home");
     return <Navigate to="/" />;
   }
 
-  console.log("AdminRoute: Rendering children");
+  // console.log("AdminRoute: Rendering children");
   return children;
 };
 

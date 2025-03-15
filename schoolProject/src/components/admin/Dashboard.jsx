@@ -39,7 +39,7 @@ const Dashboard = () => {
 
   // Redirect if not logged in or not an admin
   if (!currentUser) {
-    console.log("Dashboard redirecting: No current user");
+    // console.log("Dashboard redirecting: No current user");
     return <Navigate to="/admin/login" />;
   }
 
@@ -47,8 +47,8 @@ const Dashboard = () => {
     console.log("Dashboard redirecting: Not an admin");
     return <Navigate to="/" />;
   }
-
-  console.log("Dashboard rendering content");
+  //
+  // console.log("Dashboard rendering content");
 
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>

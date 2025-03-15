@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
             setUserRole("user");
           }
         } catch (error) {
-          // console.error("Error fetching user role:", error);
+          console.error("Error fetching user role:", error);
           setUserRole("user");
         }
       } else {
@@ -50,11 +50,11 @@ export const AuthProvider = ({ children }) => {
     isAdmin: userRole === "admin",
   };
 
-  console.log("Auth context value:", {
-    currentUser: currentUser?.email,
-    userRole,
-    isAdmin: userRole === "admin",
-  });
+  // console.log("Auth context value:", {
+  //   currentUser: currentUser?.email,
+  //   userRole,
+  //   isAdmin: userRole === "admin",
+  // });
 
   return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
 };
