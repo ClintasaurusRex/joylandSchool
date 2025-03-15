@@ -37,7 +37,7 @@ const NewsManager = () => {
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
 
-  const { showAlert, closeAlert, isAtLimit } = useLimitAlert(news, 4);
+  const { showAlert, closeAlert, isAtLimit } = useLimitAlert(news, 15);
 
   useEffect(() => {
     loadNews();

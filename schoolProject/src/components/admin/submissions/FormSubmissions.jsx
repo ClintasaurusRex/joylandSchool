@@ -18,10 +18,12 @@ import TabPanel from "./ui/TabPanel";
 import AdmissionsTable from "./tables/AdmissionsTable";
 import ContactsTable from "./tables/ContactsTable";
 import DetailsDialog from "../dialogs/DetailsDialog";
+import LimitAlert from "../../admin/submissions/ui/LimitAlert";
 
 // Custom hooks
 import { useFormSubmissions } from "../../../hooks/useFormSubmissions";
 import { useDialog } from "../../../hooks/useDialog";
+import useLimitAlert from "../../../hooks/useLimitAlert";
 
 const FormSubmissions = () => {
   const [tabValue, setTabValue] = useState(0);
@@ -39,6 +41,12 @@ const FormSubmissions = () => {
     handleDelete,
     // refreshData,
   } = useFormSubmissions();
+
+  const admissionsLimit = useLimitAlert(admissions, 1);
+  const contactsLimit = useLimitAlert(contacts, 1);
+
+  // Get the current limit alert based on the active tab
+  const currentLimitAlert = tabValue === 0 ? admissionsLimit : contactsLimit;
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
@@ -72,7 +80,12 @@ const FormSubmissions = () => {
       <Typography variant="h5" gutterBottom>
         Form Submissions
       </Typography>
-
+      <LimitAlert
+        show={currentLimitAlert.showAlert}
+        onClose={currentLimitAlert.closeAlert}
+        itemType={tabValue === 0 ? "Admission requests" : "Contact messages"}
+        limit={1}
+      />
       <Paper elevation={2} sx={{ mb: 4 }}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs value={tabValue} onChange={handleTabChange}>
