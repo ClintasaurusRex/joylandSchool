@@ -15,7 +15,7 @@ import Login from "./components/admin/Login";
 import AdminSignUp from "./components/admin/AdminSignUp";
 import AllNewsPage from "./pages/AllNewsPage";
 import { AuthProvider } from "./context/AuthContext";
-import { useAuth } from "./context/AuthContext";
+import { useAuth } from "../src/hooks/useAuth";
 
 // Admin components
 import Dashboard from "../src/components/admin/Dashboard";

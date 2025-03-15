@@ -1,6 +1,6 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
+import React from "react";
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 
 const AdminRoute = ({ children }) => {
   const { currentUser, userRole, loading } = useAuth();
@@ -9,8 +9,8 @@ const AdminRoute = ({ children }) => {
     return <div>Loading...</div>;
   }
 
-  if (!currentUser || userRole !== 'admin') {
-    return <Navigate to='/admin/login' />;
+  if (!currentUser || userRole !== "admin") {
+    return <Navigate to="/admin/login" />;
   }
 
   return children;

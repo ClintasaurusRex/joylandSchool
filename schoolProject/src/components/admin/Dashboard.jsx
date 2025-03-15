@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, Typography, Container, Paper, Tabs, Tab, Badge } from "@mui/material";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../hooks/useAuth";
 import { Navigate } from "react-router-dom";
 import NewsManager from "./NewsManager";
 import FormSubmissions from "../admin/submissions/FormSubmissions";
