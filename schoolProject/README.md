@@ -1,12 +1,100 @@
-# React + Vite
+# Joyland School Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a comprehensive website for Joyland School built with React and Vite, featuring multiple pages to showcase the school's offerings, facilitate admissions, and engage with the community.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Frontend**: React 19 with React Router for navigation
+- **Styling**: Material UI, Bootstrap, SCSS
+- **Animation**: TSParticles for visual effects
+- **Backend Integration**: Firebase for database and authentication
+- **Content Management**: Sanity client for content management
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The website includes the following pages:
+
+- **Home Page**: Featuring a hero section, key highlights, latest news, and testimonials
+- **About Page**: School history, mission, vision, and facilities
+- **Admission Page**: Application process, requirements, and fee structure
+- **Academic Page**: Programs, curriculum, and achievements
+- **Sports Page**: Sports programs and facilities
+- **Contribute Page**: Donation and volunteer opportunities
+- **Contact Us Page**: Contact information and form
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (latest LTS version recommended)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+   \`\`\`bash
+   git clone https://github.com/ClintasaurusRex/JoylandSchool.git
+   \`\`\`
+
+2. Navigate to the project directory:
+   \`\`\`bash
+   cd JoylandSchool
+   \`\`\`
+
+3. Install dependencies:
+   \`\`\`bash
+   npm install
+   \`\`\`
+
+### Development
+
+To start the development server:
+\`\`\`bash
+npm run dev
+\`\`\`
+
+This will start the Vite development server with hot module replacement (HMR).
+
+### Building for Production
+
+To build the project for production:
+\`\`\`bash
+npm run build
+\`\`\`
+
+To preview the production build:
+\`\`\`bash
+npm run preview
+\`\`\`
+
+## Project Structure
+
+The project follows a page-based architecture with shared components. Each page corresponds to a section of the school website as outlined in the development plan.
+
+## Firebase Integration
+
+The project uses Firebase for backend services:
+
+- Authentication for admin access
+- Firestore for storing dynamic content
+- Storage for media files
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (\`git checkout -b feature/amazing-feature\`)
+3. Commit your changes (\`git commit -m 'Add some amazing feature'\`)
+4. Push to the branch (\`git push origin feature/amazing-feature\`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Acknowledgments
+
+- React team for the amazing library
+- Vite for the fast build tool
+- Material UI and Bootstrap for UI components
+- Firebase for backend services
+  EOL
