@@ -11,6 +11,7 @@ import {
   DialogContent,
   DialogActions,
   Button,
+  Badge,
 } from "@mui/material";
 
 // Custom components
@@ -84,13 +85,37 @@ const FormSubmissions = () => {
         show={currentLimitAlert.showAlert}
         onClose={currentLimitAlert.closeAlert}
         itemType={tabValue === 0 ? "Admission requests" : "Contact messages"}
-        limit={1}
+        limit={10}
       />
       <Paper elevation={2} sx={{ mb: 4 }}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs value={tabValue} onChange={handleTabChange}>
-            <Tab label="Admission Requests" />
-            <Tab label="Contact Messages" />
+            <Tab
+              label={
+                <Badge
+                  badgeContent={admissions?.length > 0 ? admissions.length : null}
+                  color="error"
+                  sx={{
+                    "& .MuiBadge-badge": { fontSize: "0.8rem", height: "20px", minWidth: "20px" },
+                  }}
+                >
+                  Admission Requests
+                </Badge>
+              }
+            />
+            <Tab
+              label={
+                <Badge
+                  badgeContent={contacts?.length > 0 ? contacts.length : null}
+                  color="error"
+                  sx={{
+                    "& .MuiBadge-badge": { fontSize: "0.8rem", height: "20px", minWidth: "20px" },
+                  }}
+                >
+                  Contact Messages
+                </Badge>
+              }
+            />
           </Tabs>
         </Box>
 
