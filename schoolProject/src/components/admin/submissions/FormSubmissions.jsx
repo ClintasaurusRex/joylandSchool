@@ -42,8 +42,8 @@ const FormSubmissions = () => {
     // refreshData,
   } = useFormSubmissions();
 
-  const admissionsLimit = useLimitAlert(admissions, 1);
-  const contactsLimit = useLimitAlert(contacts, 1);
+  const admissionsLimit = useLimitAlert(admissions, 10);
+  const contactsLimit = useLimitAlert(contacts, 10);
 
   // Get the current limit alert based on the active tab
   const currentLimitAlert = tabValue === 0 ? admissionsLimit : contactsLimit;

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Box, Typography, Container, Paper, Tabs, Tab } from "@mui/material";
+import { Box, Typography, Container, Paper, Tabs, Tab, Badge } from "@mui/material";
 import { useAuth } from "../../context/AuthContext";
 import { Navigate } from "react-router-dom";
 import NewsManager from "./NewsManager";
 import FormSubmissions from "../admin/submissions/FormSubmissions";
-
 import SportsManager from "./SportsManager";
+import { useFormSubmissions } from "../../hooks/useFormSubmissions";
 
 // TabPanel component to handle tab content display
 function TabPanel(props) {
@@ -26,6 +26,12 @@ function TabPanel(props) {
 const Dashboard = () => {
   const { currentUser, isAdmin } = useAuth();
   const [tabValue, setTabValue] = useState(0);
+
+  // Get form submissions data to check for notifications
+  const { admissions, contacts } = useFormSubmissions();
+
+  // Calculate total submissions count for notification badge
+  const totalSubmissions = (admissions?.length || 0) + (contacts?.length || 0);
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
@@ -59,7 +65,19 @@ const Dashboard = () => {
           <Tabs value={tabValue} onChange={handleTabChange} aria-label="admin dashboard tabs">
             <Tab label="Overview" />
             <Tab label="News Management" />
-            <Tab label="Form Submissions" />
+            <Tab
+              label={
+                <Badge
+                  badgeContent={totalSubmissions > 0 ? totalSubmissions : null}
+                  color="error"
+                  sx={{
+                    "& .MuiBadge-badge": { fontSize: "0.8rem", height: "20px", minWidth: "20px" },
+                  }}
+                >
+                  Form Submissions
+                </Badge>
+              }
+            />
             <Tab label="Sports Management" />
           </Tabs>
         </Box>
