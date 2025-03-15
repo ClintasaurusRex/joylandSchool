@@ -10,8 +10,6 @@ import {
   ListItem,
   ListItemText,
   IconButton,
-  Alert,
-  Collapse,
   CircularProgress,
   Dialog,
   DialogTitle,
@@ -21,8 +19,9 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import CloseIcon from "@mui/icons-material/Close";
 import { fetchNews, addNewsItem, updateNewsItem, deleteNewsItem } from "../../utils/adminService";
+import LimitAlert from "../admin/submissions/ui/LimitAlert";
+import useLimitAlert from "../../hooks/useLimitAlert";
 
 const NewsManager = () => {
   const [news, setNews] = useState([]);
@@ -35,22 +34,14 @@ const NewsManager = () => {
     date: new Date().toISOString().split("T")[0],
   });
   const [editingId, setEditingId] = useState(null);
-  const [showAlert, setShowAlert] = useState(false);
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
+
+  const { showAlert, closeAlert, isAtLimit } = useLimitAlert(news, 4);
 
   useEffect(() => {
     loadNews();
   }, []);
-
-  useEffect(() => {
-    // Check if news items count reached the limit
-    if (news.length >= 10) {
-      setShowAlert(true);
-    } else {
-      setShowAlert(false);
-    }
-  }, [news]);
 
   const loadNews = async () => {
     try {
@@ -75,8 +66,7 @@ const NewsManager = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (news.length >= 10 && !editingId) {
-        setShowAlert(true);
+      if (isAtLimit && !editingId) {
         return;
       }
 
@@ -105,19 +95,16 @@ const NewsManager = () => {
     setEditingId(item.id);
   };
 
-  // Open confirmation dialog for deletion
   const confirmDelete = (id) => {
     setItemToDelete(id);
     setDeleteConfirmOpen(true);
   };
 
-  // Cancel deletion
   const cancelDelete = () => {
     setDeleteConfirmOpen(false);
     setItemToDelete(null);
   };
 
-  // Proceed with deletion after confirmation
   const handleDelete = async () => {
     if (!itemToDelete) return;
 
@@ -149,26 +136,7 @@ const NewsManager = () => {
         News Management
       </Typography>
 
-      <Collapse in={showAlert}>
-        <Alert
-          severity="warning"
-          action={
-            <IconButton
-              aria-label="close"
-              color="inherit"
-              size="small"
-              onClick={() => {
-                setShowAlert(false);
-              }}
-            >
-              <CloseIcon fontSize="inherit" />
-            </IconButton>
-          }
-          sx={{ mb: 2 }}
-        >
-          News limit reached (10 items). Please delete some older news items to free up space.
-        </Alert>
-      </Collapse>
+      <LimitAlert show={showAlert} onClose={closeAlert} itemType="News" limit={4} />
 
       <Paper elevation={2} sx={{ p: 3, mb: 4 }}>
         <Typography variant="h6" gutterBottom>
@@ -215,7 +183,7 @@ const NewsManager = () => {
                 type="submit"
                 variant="contained"
                 sx={{ mr: 1 }}
-                disabled={saveLoading || (news.length >= 10 && !editingId)}
+                disabled={saveLoading || (isAtLimit && !editingId)}
               >
                 {saveLoading ? (
                   <CircularProgress size={24} color="inherit" />
@@ -286,7 +254,6 @@ const NewsManager = () => {
         </List>
       )}
 
-      {/* Delete Confirmation Dialog */}
       <Dialog
         open={deleteConfirmOpen}
         onClose={cancelDelete}
@@ -317,5 +284,4 @@ const NewsManager = () => {
     </Box>
   );
 };
-
 export default NewsManager;
