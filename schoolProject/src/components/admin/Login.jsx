@@ -15,9 +15,9 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../utils/config";
 import { useNavigate } from "react-router-dom";
 import { setJoylandSchoolsAsAdmin } from "../../utils/adminService";
-import { useAuth } from "../../context/AuthContext";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -25,7 +25,6 @@ const Login = () => {
   const [error, setError] = useState("");
   const [loginSuccess, setLoginSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -59,7 +58,6 @@ const Login = () => {
 
       if (formData.email === import.meta.env.VITE_TEST_ADMIN_EMAIL) {
         try {
-          // Set this user as admin if they're not already
           await setJoylandSchoolsAsAdmin();
         } catch (error) {
           console.error("Error setting Joyland Schools as admin:", error);
@@ -69,6 +67,8 @@ const Login = () => {
       setError("Password is incorrect");
       console.error("Login error:", error);
       setLoading(false);
+
+      resetForm();
     }
   };
 
@@ -153,36 +153,7 @@ const Login = () => {
               {loading ? <CircularProgress size={24} /> : "Sign In"}
             </Button>
           </Box>
-          {/* <Button
-            variant='text'
-            color='secondary'
-            disabled={loading}
-            onClick={async () => {
-              try {
-                setLoading(true);
-                // First set the test user as admin
-                const adminResult = await setTestUserAsAdmin();
-                console.log('Set test user as admin result:', adminResult);
 
-                // Then log in with test credentials
-                await signInWithEmailAndPassword(
-                  auth,
-                  'test.codemajic@gmail.com',
-                  ''
-                );
-                console.log('Test admin login successful');
-                setLoginSuccess(true);
-                setLoading(false);
-              } catch (error) {
-                console.error('Login error:', error);
-                setError(error.message);
-                setLoading(false);
-              }
-            }}
-            sx={{ mt: 1 }}
-          >
-            {loading ? <CircularProgress size={24} /> : 'Login as Test Admin'}
-          </Button> */}
           {loginSuccess && (
             <Box sx={{ mt: 2, textAlign: "center" }}>
               <Typography variant="body1" color="success.main" gutterBottom>
